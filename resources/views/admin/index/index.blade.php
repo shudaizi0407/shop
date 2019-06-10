@@ -36,9 +36,9 @@
 </head>
 <body>
 <!--header-->
-@include('admin.index.common.header');
+@include('admin.common.header');
 <!--aside nav-->
-@include('admin.index.common.aside');
+@include('admin.common.aside');
 <!--aside nav-->
 
 

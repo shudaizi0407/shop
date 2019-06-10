@@ -5,9 +5,8 @@
    <dl>
     <dt>商城管理</dt>
     <!--当前链接则添加class:active-->
-    <dd><a href="product_list.html" class="active">商品列表示例</a></dd>
-    <dd><a href="product_detail.html">商品详情示例</a></dd>
-    <dd><a href="recycle_bin.html">商品回收站示例</a></dd>
+    <dd><a href="goods-list">商品列表示例</a></dd>
+    <dd><a href="">商品回收站示例</a></dd>
    </dl>
  </li>
  </ul>

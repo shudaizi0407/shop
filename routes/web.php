@@ -17,4 +17,5 @@ Route::get('/', function () {
 
 Route::group(['namespace'=>'Admin' ],function(){
 	Route::get('index','IndexController@index');
+	Route::get('goods-list','GoodsController@list');
 });
