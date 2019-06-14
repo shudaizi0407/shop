@@ -3,8 +3,10 @@
 @include('admin.common.head')
 <body>
 <!--header-->
-@include('admin.common.header')
+
+@include('admin.common.header');
 <!--aside nav-->
+
 <!--aside nav-->
 @include('admin.common.aside')
 
