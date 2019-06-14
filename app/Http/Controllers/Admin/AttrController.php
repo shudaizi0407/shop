@@ -12,6 +12,10 @@ class AttrController extends Controller
      * @param  int  $id
      * @return View
      */
+    public function __construct()
+    {
+        
+    }
     public function list()
     {
      

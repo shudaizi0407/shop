@@ -45,8 +45,8 @@
          
         <td class="center">{{$attr->attribude_value}}</td>
          
-        <td class="center">
-        <input type="" name="attribude_value" value="{{$attr->attribude_value}}" jsid="{{$attr->id}}" id="text" class="upd"  >
+        <td class="center" id="{{$attr->id}}">
+        <span  >{{$attr->attribude_value}}</span>
         </td>
         <td class="center">
           <button   class="button" id="texts" jsid="{{$attr->id}}" >{{$attr->is_show?'V':'X'}}</button>
@@ -65,23 +65,46 @@
 </html>
 <script type="text/javascript" src=""></script>
 <script type="text/javascript">
-$(".upd").change(function(){
-    var aaa = $('#text').val();
-    var id = $('#text').attr('jsid');
-    $.ajax({
-      url:"attr-valueUpd",
-      data:{id:id,attribude_value:aaa},
-      method:"get"
-    }).success(function(msg){
-      // alert(msg);
-      if(msg == 1){
-        alert('属性值名称修改完成');
-        window.location.reload();
-      }else{
-      	console.log(msg);
-      }
-    })
-})
+	$(document).on("click","span",function(){
+			span=$(this).html();
+			$(this).parent().html("<input type='text' value='"+span+"' />");
+		})
+	$(document).on("blur",":text",function(){
+			id=$(this).parent().attr('id');
+			val=$(this).val();
+			if (val==span) {
+				$(this).parent().html("<span>"+val+"</span>");
+				return false;
+			}
+			$obj=$(this);
+			$.ajax({
+				method:'get',
+				url:'attr-valueUpd',
+				data:{id:id,attribude_value:val},
+				success:function(msg){
+					if (msg==1) {
+					$obj.parent().html("<span>"+val+"</span>");	
+					}
+				}
+			})
+		})
+// $(".upd").change(function(){
+//     var aaa = $('#text').val();
+//     var id = $('#text').attr('jsid');
+//     $.ajax({
+//       url:"attr-valueUpd",
+//       data:{id:id,attribude_value:aaa},
+//       method:"get"
+//     }).success(function(msg){
+//       // alert(msg);
+//       if(msg == 1){
+//         alert('属性值名称修改完成');
+//         window.location.reload();
+//       }else{
+//       	console.log(msg);
+//       }
+//     })
+// })
 $(".button").click(function(){
     var id = $('#texts').attr('jsid');
     $.ajax({
