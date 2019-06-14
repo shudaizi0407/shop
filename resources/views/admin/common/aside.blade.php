@@ -6,7 +6,9 @@
     <dt>商城管理</dt>
     <!--当前链接则添加class:active-->
     <dd><a href="goods-list">商品列表示例</a></dd>
-    <dd><a href="">商品回收站示例</a></dd>
+    <dd><a href="goods-brandList">品牌收录</a></dd>
+    <dd><a href="goods-typeList">类型收录</a></dd>
+    <dd><a href="goods-attr">商品属性管理</a></dd>
    </dl>
  </li>
  </ul>
