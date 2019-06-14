@@ -19,3 +19,17 @@ Route::group(['namespace'=>'Admin' ],function(){
 	Route::get('index','IndexController@index');
 	Route::get('goods-list','GoodsController@list');
 });
+
+Route::group(['namespace'=>'Admin' ],function(){
+	Route::get('active-index','ActivityController@index');
+	Route::get('active-del/{id}','ActivityController@delete');
+	Route::get('active-add-list','ActivityController@create');
+	Route::post('active-add','ActivityController@doCreate');
+	Route::post('active-upate','ActivityController@update');
+
+	Route::get('discount-index','DiscountController@index');
+	Route::get('discount-del/{id}','DiscountController@delete');
+	Route::get('discount-add-list','DiscountController@create');
+	Route::post('discount-add','DiscountController@doCreate');
+
+});
