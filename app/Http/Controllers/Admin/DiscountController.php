@@ -13,8 +13,11 @@ class DiscountController extends Controller
     public function index(Request $request)
     {
         // $dis=new DisUser();
-        // $data=DisUser::all()->good();
+        // $data=DisUser::get();
         // // $data->good;
+        // foreach ($data as $k => $v) {
+        //     $v->good;
+        // }
         // var_dump($data);die;
     	$serch=$request->input('serch');
     	if (empty($serch)) {

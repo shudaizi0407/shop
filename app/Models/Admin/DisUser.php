@@ -10,7 +10,7 @@ class DisUser extends Model
     public $timestamps = false;
     //允许批量赋值的字段
     protected $guarded = [];
-    public function good(){
-	    return $this->hasOne('App\Models\Admin\Goods','id','goods_id');
-	}
+ //    public function good(){
+	//     return $this->hasOne('App\Models\Admin\Goods','id','goods_id');
+	// }
 }
