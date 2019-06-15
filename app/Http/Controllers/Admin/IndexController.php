@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -15,3 +16,5 @@ class IndexController extends BaseController
 	}
 	
 }
+
+
