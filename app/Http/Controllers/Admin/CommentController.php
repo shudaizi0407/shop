@@ -29,7 +29,7 @@ class CommentController extends Controller
                                            ->offset($offset)
                                            ->limit($p)
     		                               ->get();
-              
+            
     		    return view('admin.comment.list', ['data'=>$data, 'sumye'=>$sumye, 'prev'=>$prev, 'next'=>$next, 'page'=>$page]);
     	
        }

@@ -12,7 +12,8 @@ use App\Models\Admin\OrdersInfo as Info;
 class OrderController extends Controller
 {
     public function list()
-    {
+    {  
+      
     	$m=new Status();
         $list=$m->list();
 

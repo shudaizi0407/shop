@@ -1,5 +1,5 @@
 <aside class="lt_aside_nav content mCustomScrollbar">
- <h2><a href="admin-index">起始页</a></h2>
+ <h2><a href="index">起始页</a></h2>
  <ul>
   <li>
     <dl>

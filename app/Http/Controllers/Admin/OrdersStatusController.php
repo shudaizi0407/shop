@@ -10,7 +10,8 @@ use App\Models\Admin\OrdersStatus as Status;
 class OrdersStatusController extends Controller
 {
     public function list()
-    {
+    {   
+
     	$model=new Status();
     	$data=$model->selects();
     	

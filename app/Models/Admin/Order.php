@@ -7,13 +7,16 @@ use Illuminate\Support\Facades\DB;
 
 class Order extends Model
 {
+       
+
+
     public function selects()
     {
     	$data=Db::table('orders')->join('orders_status','orders.order_status','=','orders_status.id')
     							
     							->join('user','user.id','=','orders.user_id')
     							->paginate(5);
-    	//var_dump($data);die;
+    	// var_dump($data);die;
     	return $data;
 
     }
