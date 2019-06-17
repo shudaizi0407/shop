@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\Store;
 use App\Models\Admin\Areas;
 use Illuminate\Support\Facades\DB;
-class StoreController extends Controller
+class StoreController extends BaseController
 {
     //
     //仓库列表

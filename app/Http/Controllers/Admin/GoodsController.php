@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Admin\goods;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-class GoodsController extends Controller
+class GoodsController extends BaseController
 {
 	//分页展示商品数据
     public function list()
