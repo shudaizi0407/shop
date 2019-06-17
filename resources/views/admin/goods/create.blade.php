@@ -46,15 +46,15 @@
         <span class="item_name" style="width:120px;">规格：</span>
         <span style="color: red">颜色</span>  
           @foreach ($colors as $color)
-          <input type="checkbox" name="color" value="{{$color->arribude_value}}">{{$color->arribude_value}}
+          <input type="checkbox" name="color" value="{{$color->attribude_value}}">{{$color->attribude_value}}
           @endforeach
         <span style="color: red">&nbsp;&nbsp;尺寸</span>
           @foreach ($sizes as $size)
-          <input type="checkbox" name="size" value="{{$size->arribude_value}}">{{$size->arribude_value}}
+          <input type="checkbox" name="size" value="{{$size->attribude_value}}">{{$size->attribude_value}}
           @endforeach
         <span style="color: red">&nbsp;&nbsp;规格</span>
           @foreach ($normss as $norms)
-          <input type="checkbox" name="norms" value="{{$norms->arribude_value}}">{{$norms->arribude_value}}
+          <input type="checkbox" name="norms" value="{{$norms->attribude_value}}">{{$norms->attribude_value}}
           @endforeach
        </li>
 
