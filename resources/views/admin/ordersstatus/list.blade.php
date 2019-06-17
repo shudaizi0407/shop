@@ -6,11 +6,7 @@
 </style>
 
 <body>
-@include('admin.common.header')
-@include('admin.common.aside')
 
-
-<section class="rt_wrap content mCustomScrollbar">
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">订单状态列表</h2>
@@ -39,7 +35,7 @@
       </table>
      <div class="page"> {{ $data->links() }}</div>
  </div>
-</section>
+
 </body>
 </html>
 

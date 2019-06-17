@@ -4,12 +4,16 @@
 @include('admin.common.head')
 <body>
 <!--header-->
-@include('admin.common.header')
-<!--aside nav-->
-<!--aside nav-->
-@include('admin.common.aside')
+<style>
+    .scroll{
+        overflow-x: hidden; 
+        overflow-y: auto;
+        height: 100%;  
+        width: 100%; 
+    }
 
-<section class="rt_wrap content mCustomScrollbar">
+  </style>
+<div class="scroll">
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">订单详情示例</h2>
@@ -48,7 +52,7 @@
       </table>
       
  </div>
-</section>
+</div>
 </body>
 </html>
 <script>

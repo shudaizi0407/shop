@@ -10,6 +10,7 @@
 <![endif]-->
 <script src="js/jquery.js"></script>
 <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
 <script>
 	(function($){
 		$(window).load(function(){
@@ -32,21 +33,27 @@
 		});
 	})(jQuery);
 </script>
+ <style>
+    .scroll{
+        overflow-x: hidden; 
+        overflow-y: auto;
+        height: 100%;  
+        width: 100%; 
+    }
+
+  </style>
+  
 </head>
 <body>
-<!--header-->
-@include('admin.common.header');
-<!--aside nav-->
-@include('admin.common.aside');
-<!--aside nav-->
 
-<section class="rt_wrap content mCustomScrollbar">
+
+<div class="scroll">
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">添加活动</h2>
-       <a class="fr top_rt_btn" href="/active-index">返回活动列表</a>
+       <a class="fr top_rt_btn" href="/activity-index">返回活动列表</a>
       </div>
-     <section>
+    
         <form action="active-add" method="post">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
       <ul class="ulColumn2">
@@ -83,13 +90,13 @@
        </li>
        <li>
         <span class="item_name" style="width:120px;"></span>
-        <input type="submit" class="link_btn"/>
+        <input type="submit" class="link_btn"  />
        </li>
       </ul>
       </form>
-     </section>
+     
  </div>
-</section>
+</div>
 <script src="js/ueditor.config.js"></script>
 <script src="js/ueditor.all.min.js"> </script>
 <script type="text/javascript">

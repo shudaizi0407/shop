@@ -15,11 +15,56 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+Route::group(['namespace'=>"Admin"], function(){
+
+	Route::get('admin','IndexController@index');
+	Route::match(['get','post'],'admin-login','LoginController@login');
+	Route::get('admin-logout','LoginController@logout');
+	Route::get('admin-welcome','IndexController@welcome');
+	Route::get('admin-index','AdminController@index');
+	Route::get('admin-add','AdminController@add');
+	Route::post('admin-save','AdminController@save');
+	Route::post('admin-del','AdminController@del');
+	Route::get('admin-update','AdminController@update');
+	Route::get('menu-index','MenuController@index');
+	Route::post('menu-save','MenuController@save');
+	Route::get('role-index','RoleController@index');
+	Route::get('role-add','RoleController@add');
+	Route::post('role-save','RoleController@save');
+	Route::get('role-update','RoleController@update');
+	Route::post('role-del','RoleController@del');
+	//Route::get('index','IndexController@index');
+
+	
+	Route::get('store-list', 'StoreController@storeList');
+	Route::post('store-add', 'StoreController@storeAdd')->middleware('store');
+	Route::get('store-add-list', 'StoreController@storeAddList');
+	Route::get('region', 'StoreController@region');
+    Route::get('store-del', 'StoreController@storeDel');
+    Route::get('store-update-show', 'StoreController@storeUpdateShow');
+    Route::post('store-update', 'StoreController@storeUpdate');
+    Route::get('store-status', 'StoreController@storeStatus');
+    
+
+    Route::get('comment-list', 'CommentController@list');
+    Route::get('comment-content', 'CommentController@content');
+    Route::get('comment-status', 'CommentController@contentStatus');
+    Route::get('comment-reply', 'CommentController@reply');
+    Route::get('comment-delete', 'CommentController@delete');
+    
+    Route::get('agrees-list', 'AgreesController@list');
+    Route::get('agrees-reply', 'AgreesController@reply');
+    Route::get('agrees-content', 'AgreesController@content');
+    Route::get('agrees-delete', 'AgreesController@delete');
+
+});
 Route::group(['namespace'=>'Admin' ],function(){
 	Route::get('index','IndexController@index');
 
-	Route::get('order-list','OrderController@list');
-	Route::get('order-status','OrdersStatusController@list');
+	Route::get('orders-list','OrderController@list');
+	Route::get('ordersstatus-list','OrdersStatusController@list');
 	Route::any('order-status-add','OrdersStatusController@add');
 	Route::any('order-status-delete','OrdersStatusController@delete');
 	Route::any('order-status-update','OrdersStatusController@update');
@@ -36,8 +81,8 @@ Route::group(['namespace'=>'Admin' ],function(){
 	Route::post('up_details','GoodsController@upDetails');
 	Route::get('goods-delete','GoodsController@delete');
 	Route::get('goods-find','GoodsController@find');
-	Route::get('goods-brandList','BrandController@brandList');
-	Route::get('goods-typeList','BrandController@typeList');
+	Route::get('brand-brandlist','BrandController@brandList');
+	Route::get('brand-typelist','BrandController@typeList');
 	Route::get('brand-create','BrandController@create');
 	Route::get('brand-del','BrandController@brandDel');
 	Route::get('type-del','BrandController@typeDel');
@@ -60,7 +105,7 @@ Route::group(['namespace'=>'Admin' ],function(){
 });
 
 Route::group(['namespace'=>'Admin' ],function(){
-	Route::get('active-index','ActivityController@index');
+	Route::get('activity-index','ActivityController@index');
 	Route::get('active-del/{id}','ActivityController@delete');
 	Route::get('active-add-list','ActivityController@create');
 	Route::post('active-add','ActivityController@doCreate');

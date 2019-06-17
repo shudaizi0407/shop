@@ -19,7 +19,7 @@ class ActivityController extends Controller
     	$article = Active::findOrFail($id);
 		$res=$article->delete();
 
-		return redirect('active-index');
+		return redirect('activity-index');
     }
     public function update(Request $request)
     {
@@ -53,6 +53,6 @@ class ActivityController extends Controller
         $data=$request->input();
         unset($data['_token']);
         Active::create($data);
-        return redirect('active-index');
+        return redirect('activity-index');
     }
 }

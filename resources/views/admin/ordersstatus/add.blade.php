@@ -3,11 +3,10 @@
 @include('admin.common.head')
 <body>
 <!--header-->
-@include('admin.common.header')
-@include('admin.common.aside')
 
 
-<section class="rt_wrap content mCustomScrollbar">
+
+
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">状态添加</h2>
@@ -27,6 +26,6 @@
       </ul>
       </form>
  </div>
-</section>
+
 </body>
 </html>
