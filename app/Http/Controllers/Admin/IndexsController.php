@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 
-class IndexController extends Controller
+class IndexsController extends Controller
 {
     public function index()
     {
-    	return  view('admin.index.index');
+    	return  view('admin.goods.echars');
     }
 
 
