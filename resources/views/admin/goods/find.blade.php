@@ -7,12 +7,10 @@
 <body>
 <!--header-->
 <!--header-->
-@include('admin.common.header')
-<!--aside nav-->
-@include('admin.common.aside')
+
 <!--aside nav-->
 
-<section class="rt_wrap content mCustomScrollbar">
+
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">商品列表示例</h2>
@@ -80,6 +78,6 @@
       <page class="page">
       </page>
  </div>
-</section>
+
 </body>
 </html>

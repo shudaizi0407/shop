@@ -37,8 +37,7 @@
 </head>
 <body>
 <!--header-->
-@include('admin.common.header');
-@include('admin.common.aside');
+
 
 <section class="rt_wrap content mCustomScrollbar">
  <div class="rt_content">

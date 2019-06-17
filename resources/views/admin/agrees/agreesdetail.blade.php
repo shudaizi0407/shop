@@ -49,12 +49,10 @@
 </head>
 <body>
 
-@include('admin.common.header');
-@include('admin.common.aside');
 <!--aside nav-->
 <!--aside nav-->
 
-<section class="rt_wrap content mCustomScrollbar">
+
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">意见反馈信息</h2>
@@ -94,7 +92,7 @@
       
       </aside>
  </div>
-</section>
+
 </body>
 <script src="js/ueditor.config.js"></script>
 <script src="js/ueditor.all.min.js"> </script>

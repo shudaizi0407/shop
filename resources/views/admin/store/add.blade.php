@@ -36,8 +36,7 @@
 </head>
 <body>
 <!--header-->
-@include('admin.common.header');
-@include('admin.common.aside');
+
 
 <section class="rt_wrap content mCustomScrollbar">
  <div class="rt_content">
@@ -92,7 +91,7 @@
        </li>
        <li>
         <span class="item_name" style="width:120px;"></span>
-        <input type="submit" class="link_btn" value="更新/保存"/>
+        <input type="submit" class="link_btn" value="添加仓库"/>
        </li>
       </ul>
       </form>
