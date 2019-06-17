@@ -45,3 +45,12 @@ UserInfo::findOrFail($id);
 删除
 $article = UserInfo::findOrFail($id);
 $article->delete();
+
+
+git 命令 
+1.git add .提交
+2.git status 查看状态
+3.git commit -m"描述" 提交
+4.git push 上传
+5.git pull 下载
+6.git push origin "分支名" 上传到指定的分支

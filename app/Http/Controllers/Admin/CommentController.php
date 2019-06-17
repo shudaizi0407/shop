@@ -25,9 +25,9 @@ class CommentController extends Controller
 
     		    $data = DB::table('comment')
     		                               ->join('goods','comment.goods_id', '=', 'goods.id')
-                                           ->select('comment.*', 'goods.goodsname')
-                                           ->offset($offset)
-                                           ->limit($p)
+                                       ->select('comment.*', 'goods.goodsname')
+                                       ->offset($offset)
+                                       ->limit($p)
     		                               ->get();
             
     		    return view('admin.comment.list', ['data'=>$data, 'sumye'=>$sumye, 'prev'=>$prev, 'next'=>$next, 'page'=>$page]);
