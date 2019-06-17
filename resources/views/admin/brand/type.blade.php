@@ -6,13 +6,10 @@
 @include('admin.common.head')
 <body>
 <!--header-->
-@include('admin.common.header')
-<!--aside nav-->
-<!--aside nav-->
-@include('admin.common.aside')
 
 
-<section class="rt_wrap content mCustomScrollbar">
+
+
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">添加/更新分类</h2>
@@ -77,7 +74,7 @@
       {{ $info->links() }}
       </page>
  </div>
-</section>
+
 </body>
 </html>
 <script type="text/javascript" src=""></script>
@@ -113,8 +110,8 @@
   })
 
   $('.textbox').change(function(){
-    var aaa = $('#text').val();
-    var id = $('#text').attr('jsid');
+    var aaa = $(this).val();
+    var id = $(this).attr('jsid');
     $.ajax({
       url:"input-type",
       data:{id:id,type_name:aaa},

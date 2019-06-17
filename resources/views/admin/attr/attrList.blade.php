@@ -6,13 +6,9 @@
 @include('admin.common.head')
 <body>
 <!--header-->
-@include('admin.common.header')
-<!--aside nav-->
-<!--aside nav-->
-@include('admin.common.aside')
 
 
-<section class="rt_wrap content mCustomScrollbar">
+
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">添加/更新属性</h2>
@@ -60,7 +56,7 @@
      
       </page>
  </div>
-</section>
+
 </body>
 </html>
 <script type="text/javascript" src=""></script>

@@ -35,29 +35,19 @@
 </script>
 </head>
 <body>
-<!--header-->
-@include('admin.common.header');
-<!--aside nav-->
-@include('admin.common.aside');
+
 <!--aside nav-->
 
-<section class="rt_wrap content mCustomScrollbar">
+<!--aside nav-->
+
+
  <div class="rt_content">
       <div class="page_title">
         <input type="hidden" id="_token" value="{{csrf_token()}}">
        <h2 class="fl">活动列表</h2>
        <a class="fr top_rt_btn add_icon" href="/active-add-list">编辑活动</a>
       </div>
-      <section class="mtb">
-       <select class="select" >
-        <option >订单状态</option>
-        <option >待付款</option>
-        <option>待发货</option>
-        <option>待评价</option>
-       </select>
-       <input type="text" class="textbox textbox_225" placeholder="输入订单编号或收件人姓名/电话..."/>
-       <input type="button" value="查询" class="group_btn"/>
-      </section>
+      
       <table class="table">
        <tr>
         <th><input type="checkbox"  class="checkall"></th>
@@ -79,7 +69,7 @@
             <td class="center">{{$v->end_time}}</td>
             <td class="center stau" data-id="{{$v->id}}" data-status="{{$v->status}}">{{$v->status}}</td>
             <td class="center">
-             <a href="#" title="查看订单" class="link_icon" target="_blank">&#118;</a>
+             
              <a href="/active-del/{{$v->id}}" title="删除" class="link_icon">&#100;</a>
             </td>
          </tr>
@@ -93,7 +83,7 @@
        <a href="{{$data->url($data->lastPage())}}">尾页</a>
       </aside>
  </div>
-</section>
+
 </body>
 </html>
 <script type="text/javascript">

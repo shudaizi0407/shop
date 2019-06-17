@@ -83,6 +83,8 @@ class BrandController extends Controller
 	{
 		$id = $request->input('id');
 		$brand_name = $request->input('brand_name');
-		return DB::table('goods_brand')->where('brand_id',$id)->update(['brand_name'=>$brand_name]);
+		//var_dump($brand_name);die;
+		DB::table('goods_brand')->where('brand_id',$id)->update(['brand_name'=>$brand_name]);
+		
 	}
 }
