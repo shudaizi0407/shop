@@ -38,10 +38,10 @@
       @foreach($menus as $v)
       <hr>
  			<div class="layui-input-block">
- 				<input type="checkbox" name="menus[{{$v['mid']}}]" lay-skin="primary" title="{{$v['menuname']}}" {{ $role->rights && in_array($v['mid'],explode(',',$role->rights)) ? 'checked':''}} >
+ 				<input type="checkbox" name="menus[{{$v['mid']}}]" lay-skin="primary" title="{{$v['menuname']}}" {{ $role->rights && in_array($v['mid'],$role->rights) ? 'checked':''}} >
  				<hr>
         <?php foreach($v['children'] as $vo){?>
- 				<input type="checkbox" name="menus[{{$vo['mid']}}]" lay-skin="primary" title="{{$vo['menuname']}}" {{ $role->rights && in_array($vo['mid'],explode(',',$role->rights)) ? 'checked':''}}>
+ 				<input type="checkbox" name="menus[{{$vo['mid']}}]" lay-skin="primary" title="{{$vo['menuname']}}" {{ $role->rights && in_array($vo['mid'],$role->rights) ? 'checked':''}}>
         <?php }?>
  			</div>
       @endforeach

@@ -3,8 +3,16 @@
 @include('admin.common.head')
 <body>
 <!--header-->
+    <style>
+    .scroll{
+        overflow-x: hidden; 
+        overflow-y: auto;
+        height: 100%;  
+        width: 100%; 
+    }
 
-
+  </style>
+<div class="scroll">
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">商品添加</h2>
@@ -68,10 +76,7 @@
         <script id="editor" name="goods_desc" type="text/plain" style="width:900px;height:200px;margin-left:120px;margin-top:0;"></script>
            <!--ueditor可删除下列信息-->
            <div id="btns" style="margin-left:120px;margin-top:8px;">
-            <div>
-                <button onclick=" UE.getEditor('editor').setHide()">隐藏编辑器</button>
-                <button onclick=" UE.getEditor('editor').setShow()">显示编辑器</button>
-            </div>        
+               
         </div>
        </li>
        <li>
@@ -92,7 +97,7 @@
       </form>
      </section>
  </div>
-
+</div>
 <script src="js/ueditor.config.js"></script>
 <script src="js/ueditor.all.min.js"> </script>
 <script type="text/javascript">

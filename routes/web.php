@@ -116,4 +116,8 @@ Route::group(['namespace'=>'Admin' ],function(){
 	Route::get('discount-add-list','DiscountController@create');
 	Route::post('discount-add','DiscountController@doCreate');
 
+
+	Route::get('user-list',"UserController@list");
+	Route::get('user-status',"UserController@status");
+
 });

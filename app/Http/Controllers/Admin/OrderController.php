@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Admin\OrdersStatus as Status;
 use App\Models\Admin\OrdersInfo as Info;
 
-class OrderController extends Controller
+class OrderController extends BaseController
 {
     public function list()
     {  
