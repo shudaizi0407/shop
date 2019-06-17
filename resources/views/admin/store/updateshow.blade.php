@@ -37,8 +37,7 @@
 </head>
 <body>
 <!--header-->
-@include('admin.common.header');
-@include('admin.common.aside');
+
 
 <section class="rt_wrap content mCustomScrollbar">
  <div class="rt_content">
@@ -46,7 +45,7 @@
        <h2 class="fl">仓库修改</h2>
       
       </div>
-      <form action="admin-storeUpdate" method="post">
+      <form action="store-update" method="post">
       <ul class="ulColumn2">
                {{ csrf_field() }}
                <input type="hidden" name="id" value="{{$data->id}}">

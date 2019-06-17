@@ -36,9 +36,7 @@
 </head>
 <body>
 <!--header-->
-@include('admin.common.header');
-<!--aside nav-->
-@include('admin.common.aside');
+
 <!--aside nav-->
 
 <section class="rt_wrap content mCustomScrollbar">

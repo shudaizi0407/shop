@@ -36,12 +36,10 @@
 </head>
 <body>
 <!--header-->
-@include('admin.common.header');
-<!--aside nav-->
-@include('admin.common.aside');
+
 <!--aside nav-->
 
-<section class="rt_wrap content mCustomScrollbar">
+
  <div class="rt_content">
       <div class="page_title">
         <input type="hidden" id="_token" value="{{csrf_token()}}">
@@ -91,7 +89,7 @@
        <a href="{{$data->url($data->lastPage())}}">尾页</a>
       </aside>
  </div>
-</section>
+
 </body>
 </html>
 <script type="text/javascript">

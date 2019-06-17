@@ -6,13 +6,10 @@
 @include('admin.common.head')
 <body>
 <!--header-->
-@include('admin.common.header')
-<!--aside nav-->
-<!--aside nav-->
-@include('admin.common.aside')
 
 
-<section class="rt_wrap content mCustomScrollbar">
+
+
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">添加/更新品牌</h2>
@@ -56,7 +53,7 @@
       {{ $info->links() }}
       </page>
  </div>
-</section>
+
 </body>
 </html>
 <script type="text/javascript" src=""></script>
@@ -91,13 +88,16 @@
 
   })
     $('.textbox').change(function(){
-    var aaa = $('#text').val();
-    var id = $('#text').attr('jsid');
+    var aaa = $(this).val();
+
+    var id = $(this).attr('jsid');
+    
     $.ajax({
       url:"input-brand",
       data:{id:id,brand_name:aaa},
       method:"get"
     }).success(function(msg){
+      console.log(msg)
       if(msg == 1){
         alert('品牌名称修改完成');
         window.location.reload();

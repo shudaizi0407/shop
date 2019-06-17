@@ -10,6 +10,7 @@ class Goods extends Model
 	protected $table = 'goods';
     public function alldata(){
     	$list = DB::table('goods')->select('id','goodsname')->get();
+        return $list;
     }
     // 返回分页展示商品数据
     public function list()

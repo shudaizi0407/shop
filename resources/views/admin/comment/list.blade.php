@@ -37,12 +37,11 @@
 </head>
 <body>
 
-@include('admin.common.header');
-@include('admin.common.aside');
+
 <!--aside nav-->
 <!--aside nav-->
 
-<section class="rt_wrap content mCustomScrollbar">
+
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">商品评论列表</h2>
@@ -99,7 +98,7 @@
       <span><a href="comment-list?page={{$sumye}}">尾页  </a></span> 
       </aside>
  </div>
-</section>
+
 </body>
 
      

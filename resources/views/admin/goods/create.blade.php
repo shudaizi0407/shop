@@ -3,12 +3,8 @@
 @include('admin.common.head')
 <body>
 <!--header-->
-@include('admin.common.header')
-<!--aside nav-->
-<!--aside nav-->
-@include('admin.common.aside')
 
-<section class="rt_wrap content mCustomScrollbar">
+
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">商品添加</h2>
@@ -96,7 +92,7 @@
       </form>
      </section>
  </div>
-</section>
+
 <script src="js/ueditor.config.js"></script>
 <script src="js/ueditor.all.min.js"> </script>
 <script type="text/javascript">

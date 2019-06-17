@@ -31,7 +31,7 @@ class OrdersStatusController extends Controller
     		if ($data) {
     			echo "<script>
 						alert('添加成功');
-						location.href='order-status';	
+						location.href='ordersstatus-list';	
     				</script>";
     		}
     	}
@@ -48,7 +48,7 @@ class OrdersStatusController extends Controller
     	if ($res) {
     		echo "<script>
 						alert('删除成功');
-						location.href='order-status';	
+						location.href='ordersstatus-list';	
     			</script>";
     	}
     }
@@ -64,7 +64,7 @@ class OrdersStatusController extends Controller
     		if ($res) {
     			echo "<script>
 						alert('修改成功');
-						location.href='order-status';	
+						location.href='ordersstatus-list';	
     			</script>";
     		}
     	}

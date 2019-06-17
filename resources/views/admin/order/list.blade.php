@@ -2,12 +2,11 @@
 <html>
 @include('admin.common.head')
 <body>
-@include('admin.common.header')
-@include('admin.common.aside')
+
 <style type="text/css">
   .page li {display: inline-block;margin-right: -1px;padding: 5px;border: 1px solid #e2e2e2;min-width: 20px;text-align: center;}
 </style>
-<section class="rt_wrap content mCustomScrollbar">
+
  <div class="rt_content">
       <div class="page_title">
        <h2 class="fl">订单列表</h2>
@@ -55,7 +54,7 @@
       </table>
      <div class="page"> {{ $data->links() }}</div>
  </div>
-</section>
+
 </body>
 </html>
 <script>
