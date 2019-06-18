@@ -100,7 +100,7 @@
 //     })
 // })
 $(".button").click(function(){
-    var id = $('#texts').attr('jsid');
+    var id = $(this).attr('jsid');
     $.ajax({
       url:"attr-isShow",
       data:{id:id},

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Agrees;
 use Illuminate\Support\Facades\DB;
-class AgreesController extends Controller
+class AgreesController extends BaseController
 {
     //
     public function list(Request $request)

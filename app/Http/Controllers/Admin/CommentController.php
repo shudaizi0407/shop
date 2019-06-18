@@ -8,7 +8,7 @@ use App\Models\Admin\Comment;
 use App\Models\Admin\Areas;
 use Illuminate\Support\Facades\DB;
 
-class CommentController extends Controller
+class CommentController extends BaseController
 {
        public function list(Request $request)
        {

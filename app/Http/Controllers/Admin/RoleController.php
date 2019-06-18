@@ -77,9 +77,18 @@ class RoleController extends BaseController
 			$rid = 0;
 			$role = DB::table('role')->where('rid',$rid)->first();
 			$role && $role->rights && $role->rights = json_decode($role->rights);
+<<<<<<< HEAD
 		}else{
 			$role = DB::table('role')->where('rid',$rid['rid'])->first();
 			$role && $role->rights && $role->rights = json_decode($role->rights);
+=======
+
+		}else{
+			$role = DB::table('role')->where('rid',$rid['rid'])->first();
+			$role && $role->rights && $role->rights = json_decode($role->rights);
+
+
+>>>>>>> 0ad8c274aa5a151bdb2dd04f986baae4740d4ac0
 		}
 		$menus = DB::table('menu')->where(['status'=>0])->get();
 		// 调用生成children方法
