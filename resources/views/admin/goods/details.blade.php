@@ -64,13 +64,11 @@
         </script>
            <!--ueditor可删除下列信息-->
            <div id="btns" style="margin-left:120px;margin-top:8px;">
-            <div>
-                <button onclick=" UE.getEditor('editor').setHide()">隐藏编辑器</button>
-                <button onclick=" UE.getEditor('editor').setShow()">显示编辑器</button>
-            </div>        
+       
         </div>
        </li>
        <li>
+        
         <span class="item_name"  name="price" style="width:120px;">商品价格：</span>
         <input type="text" class="textbox" name="price" value="{{$details->price}}" />
        </li>
