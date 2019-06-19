@@ -123,6 +123,7 @@ Route::group(['namespace'=>'Admin' ],function(){
 });
 
 
+
 Route::group(['namespace'=>'Api' ],function(){
 	Route::post('register',"RegisterController@register");
 	Route::get('activate',"RegisterController@activate");
@@ -130,4 +131,18 @@ Route::group(['namespace'=>'Api' ],function(){
 	Route::put('info/update',"InfoController@update");
 	Route::get('order',"OrderController@order");
 	Route::get('order/wait',"OrderController@wait");
+
+
+	
+
+});
+Route::group(['namespace'=>'Api'], function(){
+	Route::post('login','LoginController@index');
+	
+
+
+});
+
+Route::group(['namespace'=>'Api', 'middleware'=>'token'], function(){
+	Route::post('lo','LoginController@wod');
 });
