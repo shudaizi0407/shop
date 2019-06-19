@@ -121,3 +121,13 @@ Route::group(['namespace'=>'Admin' ],function(){
 	Route::get('user-status',"UserController@status");
 
 });
+
+
+Route::group(['namespace'=>'Api' ],function(){
+	Route::post('register',"RegisterController@register");
+	Route::get('activate',"RegisterController@activate");
+	Route::get('info',"InfoController@info");
+	Route::put('info/update',"InfoController@update");
+	Route::get('order',"OrderController@order");
+	Route::get('order/wait',"OrderController@wait");
+});
