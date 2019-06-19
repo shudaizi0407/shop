@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::group(['namespace'=>"Admin"], function(){
 
-	Route::get('admin','IndexController@index');
+	Route::get('admin','IndexsController@index');
 	Route::match(['get','post'],'admin-login','LoginController@login');
 	Route::get('admin-logout','LoginController@logout');
 	Route::get('admin-welcome','IndexController@welcome');
@@ -119,5 +119,16 @@ Route::group(['namespace'=>'Admin' ],function(){
 
 	Route::get('user-list',"UserController@list");
 	Route::get('user-status',"UserController@status");
+
+});
+
+Route::group(['namespace'=>'Api', 'middleware'=>'token'], function(){
+	Route::post('lo','LoginController@wod');
+	
+
+});
+Route::group(['namespace'=>'Api'], function(){
+	Route::post('login','LoginController@index');
+	
 
 });
