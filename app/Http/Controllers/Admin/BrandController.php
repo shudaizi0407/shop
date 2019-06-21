@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Admin\brand;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-class BrandController extends Controller
+class BrandController extends BaseController
 {
 	public function brandList()
 	{

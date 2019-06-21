@@ -35,8 +35,8 @@ Route::group(['namespace'=>"Admin"], function(){
 	Route::post('role-save','RoleController@save');
 	Route::get('role-update','RoleController@update');
 	Route::post('role-del','RoleController@del');
-	//Route::get('index','IndexController@index');
 
+	
 	
 	Route::get('store-list', 'StoreController@storeList');
 	Route::post('store-add', 'StoreController@storeAdd')->middleware('store');
@@ -61,7 +61,7 @@ Route::group(['namespace'=>"Admin"], function(){
 
 });
 Route::group(['namespace'=>'Admin' ],function(){
-	Route::get('index','IndexController@index');
+
 
 	Route::get('orders-list','OrderController@list');
 	Route::get('ordersstatus-list','OrdersStatusController@list');
@@ -116,4 +116,15 @@ Route::group(['namespace'=>'Admin' ],function(){
 	Route::get('discount-add-list','DiscountController@create');
 	Route::post('discount-add','DiscountController@doCreate');
 
+
+	Route::get('user-list',"UserController@list");
+	Route::get('user-status',"UserController@status");
+
+});
+
+Route::group(['namespace'=>'Index' ],function(){
+
+	Route::get('index1','IndexController@index');
+    Route::get('cart','CartController@index');
+	Route::get('content','ContentController@index');
 });

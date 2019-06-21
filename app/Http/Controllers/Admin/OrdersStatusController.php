@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Admin\OrdersStatus as Status;
 
-class OrdersStatusController extends Controller
+class OrdersStatusController extends BaseController
 {
     public function list()
     {   

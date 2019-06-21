@@ -8,7 +8,7 @@ use App\Models\Admin\Discount;
 use App\Models\Admin\DisUser;
 use App\Models\Admin\Goods;
 
-class DiscountController extends Controller
+class DiscountController extends BaseController
 {
     public function index(Request $request)
     {

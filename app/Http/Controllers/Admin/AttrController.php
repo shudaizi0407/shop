@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Admin\attr;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-class AttrController extends Controller
+class AttrController extends BaseController
 {
     /**
      * 显示给定用户的概要文件.
