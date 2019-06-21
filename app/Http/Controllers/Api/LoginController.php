@@ -14,14 +14,23 @@ class LoginController extends Controller
     public function index(Request $request)
     {
     	$data=$request->post();
+        // var_dump($data);die;
     	$user=DB::table('user')->where($data)->get();
+
     	if (empty($user[0]->id)) {
     		return code('1000');
     	}
-    	$token=hash('sha256', Str::random(60));
+    	
+        //删除上一个
+        $tokens=DB::table('user')->where('id', $user[0]->id)->select('as_token')->get();
+
+        $request->session()->forget($tokens[0]->as_token);
+
+        $token=hash('sha256', Str::random(60));
     	DB::table('user')
           ->where('id', $user[0]->id)
           ->update(['as_token' => $token]);
         session([$token => time()]);
+        return code(200, ['token'=>$token]);
     }
 }

@@ -100,8 +100,6 @@ Route::group(['namespace'=>'Admin' ],function(){
 	Route::get('attr-valueUpd','AttrController@valueUpd');
 	Route::get('attr-valueDel','AttrController@valueDel');
 	Route::get('value-isShow','AttrController@valueShow');
-	
-
 });
 
 Route::group(['namespace'=>'Admin' ],function(){
@@ -131,18 +129,20 @@ Route::group(['namespace'=>'Api' ],function(){
 	Route::put('info/update',"InfoController@update");
 	Route::get('order',"OrderController@order");
 	Route::get('order/wait',"OrderController@wait");
-
-
-	
-
-});
-Route::group(['namespace'=>'Api'], function(){
 	Route::post('login','LoginController@index');
-	
 
+	
 
 });
 
 Route::group(['namespace'=>'Api', 'middleware'=>'token'], function(){
-	Route::post('lo','LoginController@wod');
+	Route::get('goods','GoodsController@index');
+	Route::get('type','GoodsController@type');
+	Route::get('brand','GoodsController@brand');
+	Route::get('goods/details','GoodsController@details');
+	Route::get('comment','GoodsController@comment');
+	Route::get('carousel','GoodsController@carousel');
+	Route::get('recommend','GoodsController@recommend');
+	Route::get('activity','GoodsController@activity');
+	Route::get('discount','GoodsController@discount');
 });
