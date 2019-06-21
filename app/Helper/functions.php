@@ -10,8 +10,12 @@ function code($code,$data=array())
 		'101'=>'token不存在',
 		'102'=>'token过期',
 		'1000'=>'用户不存在',
+
 		'1001'=>'数据不存在',
-		'1002'=>'图片为空'
+		'1002'=>'图片为空',
+
+		'2001'=>'参数不足'
+
 	];
 	return json_encode(['code'=>$code, 'message'=>$message[$code], 'data'=>$data]);
 }

@@ -12,9 +12,9 @@ class MessageController extends Controller
     {
         $id=$request->input('id');
         $data=Db::table('agrees')->where('user_id',$id)->join('agrees_reply','agrees.user_id','=','agrees_reply.agrees_id')->get();
-        var_dump($data);die;
+        //var_dump($data);die;
         if ($data) {
-            return code('200');
+            return code('200',$data);
         }else{
             return code(0);
         }

@@ -15,14 +15,16 @@ class Token
      */
     public function handle($request, Closure $next)
     {
+        // echo $request->token;
+        // var_dump(session($request->token));
+        // var_dump(empty(session($request->token)));
         if (!isset($request->token) || empty(session($request->token))) {
             echo code(101);die;            
         }
         if ((time()-session($request->token))>7200) {
             echo code(102);die;
         }
-        // var_dump(empty(session($request->token)));
-        // var_dump((time()-session($request->token))>100);
+        
         return $next($request);
     }
 }
