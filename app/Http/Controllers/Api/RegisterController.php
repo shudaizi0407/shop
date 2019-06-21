@@ -14,8 +14,16 @@ class RegisterController extends Controller
     {
 
     	$data=$request->input();
+        //var_dump($data);die;
         $data['pwd']=md5($data['pwd']);
         $email=$data['email'];
+        $path = $request->file('head_img');
+        if (empty($path)) {
+            # code...
+           return code('1002');  //验证是否为空
+        }
+        $path = $request->file('head_img')->store('');
+        $data['head_img'] = 'uploads/'.$path;
     	$res=Db::table('user')->insert($data);
     	if ($res) {
             $email=$email;
@@ -52,7 +60,7 @@ class RegisterController extends Controller
         $id=$request->input('id');
         $res=Db::table('user')->where('id',$id)->update(['status'=>1]);
         if ($res) {
-            echo "激活成功,请<a href='http://www.shop.com/login'>登录</a>";
+            echo "激活成功,请去登录页面登录";
         }
     }
 }

@@ -13,9 +13,9 @@ class InfoController extends Controller
     	$id=$request->input('id');
     	$data=Db::table('user')->where('id',$id)->select('uname','email','tel')->get();
     	if ($data) {
-    		return json_encode(['code'=>200,'data'=>$data,'msg'=>'查询成功']);
+    		return code('200',$data);
     	}else{
-    		return json_encode(['code'=>0,'data'=>$data,'msg'=>'查询失败']);
+    		return code('0',$data);
     	}
     }
 
@@ -26,9 +26,9 @@ class InfoController extends Controller
     	unset($data['id']);
     	$res=Db::table('user')->where('id',$id)->update($data);
     	if ($res) {
-    		return json_encode(['code'=>200,'data'=>$data,'msg'=>'修改成功']);
+    		return code('200',$data);
     	}else{
-    		return json_encode(['code'=>0,'data'=>$data,'msg'=>'修改失败']);
+    		return code('0',$data);
     	}
     }
 }
