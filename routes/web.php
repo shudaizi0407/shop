@@ -124,11 +124,44 @@ Route::group(['namespace'=>'Admin' ],function(){
 
 Route::group(['namespace'=>'Api' ],function(){
 	Route::post('register',"RegisterController@register");
+
 	Route::get('activate',"RegisterController@activate");
+
 	Route::get('info',"InfoController@info");
 	Route::put('info/update',"InfoController@update");
+
 	Route::get('order',"OrderController@order");
 	Route::get('order/wait',"OrderController@wait");
+
+	Route::get('order/unpaid',"OrderController@unpaid");
+	Route::get('order/unpaid',"OrderController@unpaid");
+
+	Route::post('shopcar/add',"ShopcarController@add");
+	Route::get('shopcar',"ShopcarController@shopcar");
+	Route::put('shopcar/update',"ShopcarController@update");
+
+	Route::delete('shopcar/del',"ShopcarController@del");
+	Route::get('collect',"CollectController@collect");
+	Route::delete('collect/del',"CollectController@del");
+	Route::post('collect/add',"CollectController@add");
+
+	Route::get('addr',"AddrController@addr");
+	Route::post('addr/add',"AddrController@add");
+	Route::delete('addr/del',"AddrController@del");
+	Route::put('addr/update',"AddrController@update");
+
+	Route::get('message',"MessageController@message");
+	
+
+
+
+
+	
+
+});
+Route::group(['namespace'=>'Api'], function(){
+
+
 	Route::post('login','LoginController@index');
 
 	
