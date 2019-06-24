@@ -29,8 +29,8 @@ class LoginController extends Controller
         $token=hash('sha256', Str::random(60));
     	DB::table('user')
           ->where('id', $user[0]->id)
-          ->update(['as_token' => $token]);
-        session([$token => time()]);
+          ->update(['as_token' => $token, 'create_time'=>time()]);
+          
         return code(200, ['token'=>$token]);
     }
 }

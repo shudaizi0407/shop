@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-
+use DB;
 class Token
 {
     /**
@@ -15,13 +15,13 @@ class Token
      */
     public function handle($request, Closure $next)
     {
-        // echo $request->token;
-        // var_dump(session($request->token));
-        // var_dump(empty(session($request->token)));
-        if (!isset($request->token) || empty(session($request->token))) {
+        $token=$request->input('token')?$request->input('token'):'';
+        $time=DB::table('user')->where('as_token', $token)->select('create_time')->get();
+
+        if (empty($time[0]->create_time)) {
             echo code(101);die;            
         }
-        if ((time()-session($request->token))>7200) {
+        if ((time()-$time[0]->create_time)>7200) {
             echo code(102);die;
         }
         
