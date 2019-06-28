@@ -179,3 +179,10 @@ Route::group(['namespace'=>'Api', 'middleware'=>'token'], function(){
 	Route::get('activity','GoodsController@activity');
 	Route::get('discount','GoodsController@discount');
 });
+Route::group(['namespace'=>'Index'],function(){
+	Route::get('home-list','GoodsController@index');
+	Route::get('brand-list','GoodsController@brand_list');
+	Route::get('details','GoodsController@details');
+	Route::get('add-cart','GoodsController@addCart');
+	Route::get('add-order','GoodsController@addOrder');
+});
