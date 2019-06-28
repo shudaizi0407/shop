@@ -17,6 +17,9 @@ class ContentController extends Controller
     //     //    echo 1;die;
     //        return redirect("index1");die;
     //    }
+    if (!$request->session()->has('id')) {
+        echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
+    }
 
         $id=$request->input('id',1);
         

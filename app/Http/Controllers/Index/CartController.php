@@ -7,19 +7,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 class CartController extends Controller
 {
-    function __construct()
-
-    { 
-        
-       if(empty($user_id)){
-
-           return redirect("/index1");
-       }
-    }
+    
 
     public function index(Request $request)
     {    
-        
+         
+        if (!$request->session()->has('id')) {
+    		echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
+    	}
+
         $id=$request->input('id',1);
          
    
