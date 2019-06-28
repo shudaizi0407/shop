@@ -25,7 +25,7 @@
 					</ul>
 				</div>
 				<div class="right fr">
-					<div class="gouwuche fr"><a href="">我的订单</a></div>
+					<div class="gouwuche fr"><a href="/content">我的订单</a></div>
 					<div class="fr">
 						<ul>
 							<li><a href="./login.html" target="_blank">登录</a></li>

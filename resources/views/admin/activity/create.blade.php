@@ -10,6 +10,29 @@
 <![endif]-->
 <script src="js/jquery.js"></script>
 <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script>
+	(function($){
+		$(window).load(function(){
+			
+			$("a[rel='load-content']").click(function(e){
+				e.preventDefault();
+				var url=$(this).attr("href");
+				$.get(url,function(data){
+					$(".content .mCSB_container").append(data); //load new content inside .mCSB_container
+					//scroll-to appended content 
+					$(".content").mCustomScrollbar("scrollTo","h2:last");
+				});
+			});
+			
+			$(".content").delegate("a[href='top']","click",function(e){
+				e.preventDefault();
+				$(".content").mCustomScrollbar("scrollTo",$(this).attr("href"));
+			});
+			
+		});
+	})(jQuery);
+</script>
  <style>
     .scroll{
         overflow-x: hidden; 
@@ -19,6 +42,7 @@
     }
 
   </style>
+  
 </head>
 <body>
 
@@ -63,32 +87,6 @@
        <li>
         <span class="item_name" style="width:120px;">活动描述：</span>
         <script id="editor" name='active_desc' type="text/plain" style="width:1024px;height:500px;margin-left:120px;margin-top:0;"></script>
-           <!--ueditor可删除下列信息-->
-           <!-- <div id="btns" style="margin-left:120px;margin-top:8px;">
-            <div>
-                <button onclick="getContent()">获得内容</button>
-                <button onclick="setContent()">写入内容</button>>
-                <button onclick="hasContent()">判断是否有内容</button>
-                <button onclick="setFocus()">使编辑器获得焦点</button>
-                <button onmousedown="setblur(event)" >编辑器失去焦点</button>
-        
-            </div>
-            <div>
-                <button onclick="getText()">获得当前选中的文本</button>
-                <button onclick="insertHtml()">插入给定的内容</button>
-                <button id="enable" onclick="setEnabled()">可以编辑</button>
-                <button onclick="setDisabled()">不可编辑</button>
-                <button onclick=" UE.getEditor('editor').setHide()">隐藏编辑器</button>
-                <button onclick=" UE.getEditor('editor').setShow()">显示编辑器</button>
-                <button onclick=" UE.getEditor('editor').setHeight(300)">设置高度为300默认关闭了自动长高</button>
-            </div>
-        
-            <div>
-                <button onclick="getLocalData()" >获取草稿箱内容</button>
-                <button onclick="clearLocalData()" >清空草稿箱</button>
-            </div>
-        
-        </div> -->
        </li>
        <li>
         <span class="item_name" style="width:120px;"></span>

@@ -4,11 +4,97 @@ namespace App\Http\Controllers\Index;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use Illuminate\Support\Facades\DB;
 class ContentController extends Controller
 {
-    public function index()
+    
+
+
+    public function index(Request $request)
     {
-        return view('index.content.content');
+    //     $user_id='';
+    //    if($user_id==''){
+    //     //    echo 1;die;
+    //        return redirect("index1");die;
+    //    }
+
+        $id=$request->input('id',1);
+        
+        $data=Db::table('orders')->join('orders_status','orders.order_status','=','orders_status.id')
+                                 ->join('orders_info','orders.order_number','=','orders_info.order_number')
+                                 ->join('goods','goods.id','=','orders_info.goods_id')
+                                 ->select('orders.*', 'orders_status.*', 'orders_info.*','goods.goodsname','goods.img','goods.price')
+                                  ->where('user_id',$id)->get();
+    //    var_dump($data);die;
+        return view('index.content.content',['data'=>$data]);
     }
+
+
+    public function order(Request $request)
+    {
+
+        $id=$request->input('id',1);
+        
+        $data=Db::table('orders')->join('orders_status','orders.order_status','=','orders_status.id')
+                                 ->join('orders_info','orders.order_number','=','orders_info.order_number')
+                                 ->join('goods','goods.id','=','orders_info.goods_id')
+                                 ->select('orders.*', 'orders_status.*', 'orders_info.*','goods.goodsname','goods.img','goods.price')
+                                  ->where('user_id',$id)->get();
+    //    var_dump($data);die;
+       echo json_encode(['data'=>$data]);
+    }
+
+      //待收货
+      public function wait(Request $request)
+      {
+          $id=$request->input('id',1);
+          $data=Db::table('orders')->where('orders.user_id',$id)
+                                         ->join('orders_status','orders.order_status','=','orders_status.id')
+                                         ->join('orders_info','orders.order_number','=','orders_info.order_number')
+                                         ->join('goods','goods.id','=','orders_info.goods_id')
+                                         ->select('orders.*', 'orders_status.*', 'orders_info.*','goods.goodsname','goods.img','goods.price')
+                                         ->where("order_status",'=',2)->get();
+        // var_dump($data);die;
+          if ($data) {
+              return code('200',$data);
+          }else{
+              return code('1001');
+          }
+      }
+
+      public function comment(Request $request)
+      {
+          $id=$request->input('id',1);
+          $data=Db::table('orders')->where('orders.user_id',$id)->join('orders_status','orders.order_status','=','orders_status.id')->join('orders_info','orders.order_number','=','orders_info.order_number')
+          ->join('goods','goods.id','=','orders_info.goods_id')
+          ->select('orders.*', 'orders_status.*', 'orders_info.*','goods.goodsname','goods.img','goods.price')->where("order_status",'=',3)->get();
+          if ($data) {
+              return code('200',$data);
+          }else{
+              return code('1001');
+          }
+  
+      }
+
+      public function unpaid(Request $request)
+      {
+          $id=$request->input('id',1);
+          $data=Db::table('orders')->where('orders.user_id',$id)->join('orders_status','orders.order_status','=','orders_status.id')->join('orders_info','orders.order_number','=','orders_info.order_number')
+          ->join('goods','goods.id','=','orders_info.goods_id')
+          ->select('orders.*', 'orders_status.*', 'orders_info.*','goods.goodsname','goods.img','goods.price')->where("order_status",'=',1)->get();
+          if ($data) {
+              return code('200',$data);
+          }else{
+              return code('1001');
+          }
+  
+      }
+     //为您推荐
+      public function goodsNew()
+      {
+          $data = Db::table('goods')->limit(5)->get();
+        //   var_dump($data);die;
+        return view('index.content.goodsnew',['data'=>$data]);
+      }
+
 }

@@ -27,6 +27,10 @@ class GoodsController extends BaseController
         $color = $model->color();
         $size = $model->size();
         $norms = $model->norms();
+        // var_dump($color);
+        // // var_dump($size);
+        // // // var_dump($norms);
+        // die;
     	return view('admin.goods.create',['brand' => $brand,'type'=>$type])->with(['colors'=>$color,'sizes'=>$size,'normss'=>$norms]);
     }
     

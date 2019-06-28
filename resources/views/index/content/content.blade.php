@@ -23,52 +23,182 @@
 			<div class="ddzx">个人中心</div>
 			<div class="subddzx">
 				<ul>
-			         <li><a href="">我的订单</a></li>
+			         
+					
 					<li><a href="/cart">我的购物车</a></li>
 					
 				</ul>
 			</div>
+			<div class="ddzx">我的订单</div>
+			<div class="subddzx">
+				<ul>
+			         <li><a href="javascript:;" onclick="unpaid()">待支付订单</a></li>
+					 <li><a href="javascript:;" onclick="wait()">待收货</a></li>
+					 <li><a href="javascript:;" onclick="comment()">待评论</a></li>
+					 <li><a href="javascript:;" onclick="order()">全部订单</a></li>
+					 <li><a href="/goodsnew" >为你推荐</a></li>
+				</ul>
+			</div>
+			
 		</div>
+	
+
 		<div class="rtcont fr">
-			<div class="ddzxbt">交易订单</div>
+			<div class="ddzxbt">全部订单</div>
+        
+
+           @foreach ($data as $vo)
 			<div class="ddxq">
-				<div class="ddspt fl"><img src="./image/gwc_xiaomi6.jpg" alt=""></div>
-				<div class="ddbh fl">订单号:1705205643098724</div>
+				<div class="ddspt fl"><img src="{{$vo->img}}" width="80px;" alt=""></div>
+				<div class="ddbh fl">订单号:{{$vo->order_number}}</div>
 				<div class="ztxx fr">
 					<ul>
-						<li>已发货</li>
-						<li>￥2499.00</li>
-						<li>2017/05/20 13:30</li>
-						<li><a href="">订单详情></a></li>
+					    <li>{{$vo->goodsname}}
+						 
+						    </li>
+							
+						<li>{{$vo->price}}</li>
+						<li>{{$vo->state}}</li>
+					  
+					 	<li><?php echo (date("y/m/d h:i",$vo->create_time))?>
+                                						 
+						 </li>
+						 <li>
+							<span style="font-size:12px;">查看详情>
+						  
+						  </span>
+							</li>
 						<div class="clear"></div>
 					</ul>
 				</div>
+				
 				<div class="clear"></div>
 			</div>
-			<div class="ddxq">
-				<div class="ddspt fl"><img src="./image/liebiao_hongmin4_dd.jpg" alt=""></div>
-				<div class="ddbh fl">订单号:170526435444865</div>
-				<div class="ztxx fr">
-					<ul>
-						<li>已发货</li>
-						<li>￥1999.00</li>
-						<li>2017/05/26 14:02</li>
-						<li><a href="">订单详情></a></li>
-						<div class="clear"></div>
-					</ul>
-				</div>
-				<div class="clear"></div>
-			</div>
-		</div>
+
+			
+          @endforeach
+
+			
+	
 		<div class="clear"></div>
 		</div>
+		
 	</div>
 <!-- self_info -->
 		
-		<footer class="mt20 center">			
-			<div class="mt20">小米商城|MIUI|米聊|多看书城|小米路由器|视频电话|小米天猫店|小米淘宝直营店|小米网盟|小米移动|隐私政策|Select Region</div>
-			<div>©mi.com 京ICP证110507号 京ICP备10046444号 京公网安备11010802020134号 京网文[2014]0059-0009号</div> 
-			<div>违法和不良信息举报电话：185-0130-1238，本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</div>
-		</footer>
+		
 	</body>
 </html>
+<script src="./js/jquery-1.8.3.js"> </script>
+<script>
+function wait(){
+    
+	$.ajax({
+        
+		 url:"/wait",
+		 dataType:"json",
+		success:function(res){
+				  
+				
+			   var str='';
+			   str+='<div class="rtcont fr"><div class="ddzxbt">带收货</div>';
+
+
+			  $.each(res.data,function(i,v){
+				//   data= new Date(v.create_time);
+
+
+                  console.log(v)
+                  str+='<div class="ddxq"><div class="ddspt fl"><img src="'+v.img+'" width="80px;" alt=""></div><div class="ddbh fl">订单号:'+v.order_number+'</div><div class="ztxx fr"><ul><li>'+v.goodsname+'</li><li>'+v.price+'</li><li>'+v.state+'</li><li>19/6/24 12:03</li><li><span style="font-size:12px;">查看详情></span></li><div class="clear"></div></ul></div><div class="clear"></div></div>';
+
+			  })
+
+			  $(".rtcont").html(str);
+		}
+
+	})
+
+}
+
+function order(){
+    
+	$.ajax({
+        
+		 url:"/orderall",
+		 dataType:"json",
+		success:function(res){
+			
+			   var str='';
+			       str+='<div class="rtcont fr"><div class="ddzxbt">全部订单</div>';
+			  $.each(res.data,function(i,v){
+
+				// console.log(v)
+                  str +='<div class="ddxq"><div class="ddspt fl"><img src="'+v.img+'" width="80px;" alt=""></div><div class="ddbh fl">订单号:'+v.order_number+'</div><div class="ztxx fr"><ul><li>'+v.goodsname+'</li><li>'+v.price+'</li><li>'+v.state+'</li><li>19/6/24 12:03</li><li><span style="font-size:12px;">查看详情></span></li><div class="clear"></div></ul></div><div class="clear"></div></div>';
+                   
+				  
+			  })
+			    
+              
+			  $(".rtcont").html(str);
+			//   $(".ddxq").remove();
+			 
+		}
+
+	})
+
+}
+
+
+
+
+
+function comment(){
+    //  alert(1)
+	$.ajax({
+        
+		 url:"/ordercomment",
+		 dataType:"json",
+		success:function(res){
+			var str='';
+			       str+='<div class="rtcont fr"><div class="ddzxbt">待评论</div>';
+			  $.each(res.data,function(i,v){
+
+				// console.log(v)
+                  str +='<div class="ddxq"><div class="ddspt fl"><img src="'+v.img+'" width="80px;" alt=""></div><div class="ddbh fl">订单号:'+v.order_number+'</div><div class="ztxx fr"><ul><li>'+v.goodsname+'</li><li>'+v.price+'</li><li>'+v.state+'</li><li>19/6/24 12:03</li><li><span style="font-size:12px;">查看详情></span></li><div class="clear"></div></ul></div><div class="clear"></div></div>';
+                   
+				  
+			  })
+			    
+              
+			  $(".rtcont").html(str);
+		}
+
+	})
+
+}
+
+function unpaid(){
+    //  alert(1)
+	$.ajax({
+        
+		 url:"/unpaid",
+		 dataType:"json",
+		success:function(res){
+			var str='';
+			       str+='<div class="rtcont fr"><div class="ddzxbt">未支付</div>';
+			  $.each(res.data,function(i,v){
+
+				// console.log(v)
+                  str +='<div class="ddxq"><div class="ddspt fl"><img src="'+v.img+'" width="80px;" alt=""></div><div class="ddbh fl">订单号:'+v.order_number+'</div><div class="ztxx fr"><ul><li>'+v.goodsname+'</li><li>'+v.price+'</li><li>'+v.state+'</li><li>19/6/24 12:03</li><li><span style="font-size:12px;">查看详情></span></li><div class="clear"></div></ul></div><div class="clear"></div></div>';
+                   
+				  
+			  })
+			    
+              
+			  $(".rtcont").html(str);
+		}
+
+	})
+
+}
+</script>

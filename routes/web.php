@@ -100,8 +100,6 @@ Route::group(['namespace'=>'Admin' ],function(){
 	Route::get('attr-valueUpd','AttrController@valueUpd');
 	Route::get('attr-valueDel','AttrController@valueDel');
 	Route::get('value-isShow','AttrController@valueShow');
-	
-
 });
 
 Route::group(['namespace'=>'Admin' ],function(){
@@ -122,9 +120,81 @@ Route::group(['namespace'=>'Admin' ],function(){
 
 });
 
+
 Route::group(['namespace'=>'Index' ],function(){
 
 	Route::get('index1','IndexController@index');
-    Route::get('cart','CartController@index');
+	Route::get('cart','CartController@index');
+	Route::get('cartdel','CartController@del');
+	Route::get('update','CartController@update');
+    Route::get('confirmorder','CartController@order');
+    Route::post('orderadd','CartController@orderAdd');
+	Route::post('orderadddata','CartController@orderAddData');
+	Route::get('endorder','CartController@endorder');
+
 	Route::get('content','ContentController@index');
+	Route::get('goodsnew','ContentController@goodsnew');
+	Route::get('wait','ContentController@wait');
+    Route::get('ordercomment','ContentController@comment');
+	Route::get('orderall','ContentController@order');
+	Route::get('unpaid','ContentController@unpaid');
+});
+
+Route::group(['namespace'=>'Api' ],function(){
+	Route::post('register',"RegisterController@register");
+
+	Route::get('activate',"RegisterController@activate");
+
+	Route::get('info',"InfoController@info");
+	Route::put('info/update',"InfoController@update");
+
+	Route::get('order',"OrderController@order");
+	Route::get('order/wait',"OrderController@wait");
+
+	Route::get('order/unpaid',"OrderController@unpaid");
+	Route::get('order/unpaid',"OrderController@unpaid");
+
+	Route::post('shopcar/add',"ShopcarController@add");
+	Route::get('shopcar',"ShopcarController@shopcar");
+	Route::put('shopcar/update',"ShopcarController@update");
+
+	Route::delete('shopcar/del',"ShopcarController@del");
+	Route::get('collect',"CollectController@collect");
+	Route::delete('collect/del',"CollectController@del");
+	Route::post('collect/add',"CollectController@add");
+
+	Route::get('addr',"AddrController@addr");
+	Route::post('addr/add',"AddrController@add");
+	Route::delete('addr/del',"AddrController@del");
+	Route::put('addr/update',"AddrController@update");
+
+	Route::get('message',"MessageController@message");
+	
+
+
+
+
+	
+
+});
+Route::group(['namespace'=>'Api'], function(){
+
+
+	Route::post('login','LoginController@index');
+
+	
+
+});
+
+Route::group(['namespace'=>'Api', 'middleware'=>'token'], function(){
+	Route::get('goods','GoodsController@index');
+	Route::get('type','GoodsController@type');
+	Route::get('brand','GoodsController@brand');
+	Route::get('goods/details','GoodsController@details');
+	Route::get('comment','GoodsController@comment');
+	Route::get('carousel','GoodsController@carousel');
+	Route::get('recommend','GoodsController@recommend');
+	Route::get('activity','GoodsController@activity');
+	Route::get('discount','GoodsController@discount');
+
 });

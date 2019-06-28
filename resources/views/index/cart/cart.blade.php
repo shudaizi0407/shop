@@ -5,14 +5,20 @@
 		<meta charset="UTF-8">
         <meta name="author" content="order by dede58.com"/>
 		<title>我的购物车-小米商城</title>
+		<style type="text/css">
+   .page li {display: inline-block;margin-right: -1px;padding: 5px;border: 1px solid #e2e2e2;min-width: 20px;text-align: center;}
+</style>
 		<base href="./index/">
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 	</head>
+	
 	<body>
 	<!-- start header -->
 	<!--end header -->
 
 <!-- start banner_x -->
+
+
 		<div class="banner_x center">
 		   
 			<a href="/index1" target="_blank"><div class="logo fl"></div></a>
@@ -43,41 +49,55 @@
 					<div class="sub_top fr">操作</div>
 					<div class="clear"></div>
 				</div>
-				<div class="content2 center">
+
+				<form action="/orderadd" method="post">
+				@csrf
+				@foreach($data as $vo)
+				<div class="content2 center" >
+			            <input type="hidden" name="goods_id" value="{{$vo->id}}">
 					<div class="sub_content fl ">
-						<input type="checkbox" name="check"  class="quanxuan"/>
+						<input type="checkbox" name="check"  class="quanxuan" data="{{ $vo->price * $vo->num }}" />
 					</div>
-					<div class="sub_content fl"><img src="./image/gwc_xiaomi6.jpg"></div>
-					<div class="sub_content fl ft20">小米6全网通6GB内存+64GB 亮黑色</div>
-					<div class="sub_content fl ">￥<span class="price">2499</span></div>
+					<div class="sub_content fl"><img src="{{$vo->img}}" style="width:80px;" ></div>
+					<div class="sub_content fl ft20">{{$vo->goodsname }} 
+			
+					 <span style="font-size:13px;">
+					 {{ json_decode($vo->attribude,true) }}
+					 </span>
+					 
+					 </div>
+					<div class="sub_content fl ">￥<span id="price{{ $vo->id}}" >{{ $vo->price}}</span></div>
 					<div class="sub_content fl">
-						<input class="shuliang num" type="number" value="1" step="1" min="1" >
+						<input class="shuliang num" type="number" data-id="{{$vo->id}}"  value="{{$vo->num}}" step="1" min="1" >
 					</div>
-					<div class="sub_content fl A">￥<span class="summMoney"></span></div>
-					<div class="sub_content fl"><a href="">×</a></div>
+					<div class="sub_content fl A">￥<span id="summMoney{{$vo->id}}" >{{ $vo->price * $vo->num }}</span></div>
+					<div class="sub_content fl"><a href="/cartdel?goods_id={{$vo->id}}">×</a></div>
 					<div class="clear"></div>
+				</div>
+				@endforeach
+				<div class="page">
+				{{ $data->links() }}
 				</div>
 				
 			</div>
+
 			<div class="jiesuandan mt20 center">
 				<div class="tishi fl ml20">
 					<ul>
 						<li><a href="./liebiao.html">继续购物</a></li>
-						<li>|</li>
-						<li>共<span>2</span>件商品，已选择<span class="num" > 0</span>件</li>
-						<div class="clear"></div>
+					<div class="clear"></div>
 					</ul>
 				</div>
 				<div class="jiesuan fr">
 					<div class="jiesuanjiage fl">合计（不含运费）：￥  <span class="sumM"> 0</span></div>
 					<div class="jsanniu fr">
-					<input class="jsan" type="submit" name="jiesuan"  value="确认下单"/>
+					      <input class="jsan" type="submit" name="jiesuan"  value="去结算"/>
 					</div>
 					<div class="clear"></div>
 				</div>
 				<div class="clear"></div>
 			</div>
-			
+			</form>
 		</div>
 	
 	<!-- footer -->
@@ -91,13 +111,33 @@
 	</body>
 </html>
 <script src="./js/jquery-1.8.3.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue" charset="utf-8"></script>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-resource/0.7.0/vue-resource.min.js"></script> -->
 <!-- <script src="//cdn.bootcss.com/vue-resource/1.0.3/vue-resource.js" type="text/javascript" charset="utf-8"></script> -->
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-<script src="./js/cart.js"></script>
+
 <script>
+
+//计算数量的总价格
+$(".num").click(function(){
+	 var id=$(this).attr("data-id");
+	  
+	  num=$(this).attr("value");
+	  price=$('#price'+id).html();
+	 
+	  sum=num * price;
+	 $("#summMoney"+id).html(sum);
+	  
+	 $.ajax({
+		 url:"/update",
+		 data:{goods_id:id,num:num},
+
+	 })
+
+ })
+
+
 $(function(){
 
 	//全选
@@ -105,54 +145,65 @@ $(function(){
  
 
 		num=$("[name=check]:checkbox").prop("checked",true);
-		$(".num").html(num.length);
-		price=$(".price").text();
-		num=$(".num").val();
-		sumM=num*price;
-		console.log(sumM)
-		$(".sumM").text(sumM);
+		getAllPrice() 
 
 });
 //全不选
 $(".qx").click(function(){
 
 	$("[name=check]:checkbox").prop("checked",false);
-     $(".num").html(0);
-	 $(".sumM").text(0);
+	$(".sumM").text(0);
 });
 // 单选
-$("[name=check]").click(function(){
-	  a=$(this).text();
-	  console.log(a)
-	 if(a==0){
-		$("[name=check]:checkbox").prop("checked",true);
-		b=$(this).text(1);
-        price=$(".price").text();
-		num=$(".num").val();
-		sumM=num*price;
-		$(".sumM").text(sumM);
+$("[name=check]").on("click",function(){
+	var par_label = $(this).parent();
+	id=$(".num").attr("data-id");
+	var items = document.getElementsByName("check"); 
 
-	 }else{
-		b=$(this).text(0);
-		$(".sumM").text(0);
-	 }
-	    
+
+	for(var i=0;i<items.length;i++){ 
+              if(items[i].checked){ 
+				
+				 
+				
+              } 
+		  } 
+		  getAllPrice() 
 });
+//
+function getAllPrice() {
+    var s = 0.0;
+    $("input[type='checkbox'][name='check']").each(function () {
+		
+        if(this.checked == true){
+		
+			s += parseInt($(this).attr('data'));
+			// alert(s)
+        }
+    })
+    $(".sumM").text(s);
+}
+
+
+
 
 // 计算总金额
-price=$(".price").text();
-num=$(".num").val();
-sumMoney=num*price;
-$(".summMoney").text(sumMoney);
 
-$(".num").click(function(){
 
-    price=$(".price").text();
-    num=$(".num").val();
-    sumMoney=num*price;
-	console.log(sumMoney)
-    $(".summMoney").text(sumMoney);
-})
+
+// $(".num").click(function(){
+
+// 	id=$(this).attr('data-id');
+	
+// 	price=$(".price"+id).html();
+// 	console.log(price);
+// 	num=$(".num"+id).val();
+// 	console.log(num);
+
+//     sumMoney=num*price;
+   
+//     $(".summMoney"+id).html(sumMoney);
+// })
 
 
 })
