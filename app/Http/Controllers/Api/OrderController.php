@@ -35,7 +35,7 @@ class OrderController extends Controller
 
 
     //代付款
-    public function unpaid()
+    public function unpaid(Request $request)
     {
         $id=$request->input('id');
         $data=Db::table('orders')->where('orders.user_id',$id)->leftjoin('orders_status','orders.order_status','=','orders_status.id')->where("order_status",'=',1)->get();
@@ -46,8 +46,8 @@ class OrderController extends Controller
         }
 
     }
-
-    public function comment()
+    //待评论
+    public function comment(Request $request)
     {
         $id=$request->input('id');
         $data=Db::table('orders')->where('orders.user_id',$id)->leftjoin('orders_status','orders.order_status','=','orders_status.id')->where("order_status",'=',3)->get();

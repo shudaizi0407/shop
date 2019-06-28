@@ -134,7 +134,7 @@ Route::group(['namespace'=>'Api' ],function(){
 	Route::get('order/wait',"OrderController@wait");
 
 	Route::get('order/unpaid',"OrderController@unpaid");
-	Route::get('order/unpaid',"OrderController@unpaid");
+	Route::get('order/comment',"OrderController@comment");
 
 	Route::post('shopcar/add',"ShopcarController@add");
 	Route::get('shopcar',"ShopcarController@shopcar");
@@ -151,6 +151,7 @@ Route::group(['namespace'=>'Api' ],function(){
 	Route::put('addr/update',"AddrController@update");
 
 	Route::get('message',"MessageController@message");
+	
 	
 
 
