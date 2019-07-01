@@ -54,9 +54,10 @@
 				@csrf
 				@foreach($data as $vo)
 				<div class="content2 center" >
-			            <input type="hidden" name="goods_id" value="{{$vo->id}}">
+
+			            <!-- <input type="hidden" name="goods_id[]" value="{{$vo->id}}"> -->
 					<div class="sub_content fl ">
-						<input type="checkbox" name="check"  class="quanxuan" data="{{ $vo->price * $vo->num }}" />
+						<input type="checkbox" name="check[]"  value="{{$vo->id}}" class="quanxuan" data="{{ $vo->price * $vo->num }}" />
 					</div>
 					<div class="sub_content fl"><img src="{{$vo->img}}" style="width:80px;" ></div>
 					<div class="sub_content fl ft20">{{$vo->goodsname }} 
@@ -73,6 +74,7 @@
 					<div class="sub_content fl A">￥<span id="summMoney{{$vo->id}}" >{{ $vo->price * $vo->num }}</span></div>
 					<div class="sub_content fl"><a href="/cartdel?goods_id={{$vo->id}}">×</a></div>
 					<div class="clear"></div>
+					
 				</div>
 				@endforeach
 				<div class="page">
@@ -89,6 +91,9 @@
 					</ul>
 				</div>
 				<div class="jiesuan fr">
+                         
+
+
 					<div class="jiesuanjiage fl">合计（不含运费）：￥  <span class="sumM"> 0</span></div>
 					<div class="jsanniu fr">
 					      <input class="jsan" type="submit" name="jiesuan"  value="去结算"/>
@@ -144,18 +149,18 @@ $(function(){
 	$(".q").click(function(){
  
 
-		num=$("[name=check]:checkbox").prop("checked",true);
+		num=$(".quanxuan:checkbox").prop("checked",true);
 		getAllPrice() 
 
 });
 //全不选
 $(".qx").click(function(){
 
-	$("[name=check]:checkbox").prop("checked",false);
+	$(".quanxuan:checkbox").prop("checked",false);
 	$(".sumM").text(0);
 });
 // 单选
-$("[name=check]").on("click",function(){
+$(".quanxuan").on("click",function(){
 	var par_label = $(this).parent();
 	id=$(".num").attr("data-id");
 	var items = document.getElementsByName("check"); 
@@ -164,8 +169,7 @@ $("[name=check]").on("click",function(){
 	for(var i=0;i<items.length;i++){ 
               if(items[i].checked){ 
 				
-				 
-				
+		
               } 
 		  } 
 		  getAllPrice() 
@@ -173,7 +177,7 @@ $("[name=check]").on("click",function(){
 //
 function getAllPrice() {
     var s = 0.0;
-    $("input[type='checkbox'][name='check']").each(function () {
+    $(".quanxuan").each(function () {
 		
         if(this.checked == true){
 		
