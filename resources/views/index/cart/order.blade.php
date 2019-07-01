@@ -49,12 +49,12 @@
                 <td class="car_th" width="550">商品名称</td>
                 <td class="car_th" width="140">属性</td>
                 <td class="car_th" width="150">购买数量</td>
-                <td class="car_th" width="130">小计</td>
+                <td class="car_th" width="130">单价</td>
                 
               </tr>
               <form action="/orderadddata" method="post">
               @csrf
-              @foreach($data as $vo)
+              @foreach($data1 as $vo)
               <input type="hidden" name="goods_id" value="{{$vo->id}}">
               <input type="hidden" name="number" value="{{$vo->num}}">
               <input type="hidden" name="goods_attribute" value="{{ json_decode($vo->attribude,true)}}">
@@ -65,7 +65,7 @@
                  {{$vo->goodsname}}
                 </td>
                 <td align="center">{{ json_decode($vo->attribude,true)}} </td>
-                <td align="center">{{$vo->num}}</td>
+                <td align="center" class="num" data-num="{{$vo->num}}">{{$vo->num}}</td>
                 <td align="center" style="color:#ff4e00;" class='sum' value="{{$vo->price}}">￥{{$vo->price}}</td>
               
               </tr>
@@ -77,33 +77,25 @@
             </table>
             
             <div class="two_t">
-            	<span class="fr"><a href="#">修改</a></span>收货人信息
+            	<span class="fr"></span>收货人信息 
             </div>
             <table border="0" class="peo_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
               <tr>
                 <td class="p_td" width="160">用户名称</td>
                 <td width="395">{{$info->names}}</td>
-                <td class="p_td" width="160">电子邮件</td>
-                <td width="395"></td>
+              
               </tr>
               <tr>
                 <td class="p_td">详细信息</td>
                 <td>{{$info->addr}}</td>
-                <td class="p_td">邮政编码</td>
-                <td></td>
+               
               </tr>
               <tr>
-                <td class="p_td">电话</td>
-                <td></td>
                 <td class="p_td">手机</td>
                 <td>{{$info->tels}}</td>
+               
               </tr>
-              <tr>
-                <td class="p_td">标志建筑</td>
-                <td></td>
-                <td class="p_td">最佳送货时间</td>
-                <td></td>
-              </tr>
+           
             </table>
 
             
@@ -129,7 +121,7 @@
               </tr>
               <tr>
               	<td align="center"><input type="checkbox" name="ch" /></td>
-                <td align="center" style="font-size:14px;"><b>城际快递</b></td>
+                <td align="center" style="font-size:14px;"><b>韵达快递</b></td>
                 <td>包邮</td>
                 <td align="center">￥00.00</td>
                 <td align="center">￥0.00</td>
@@ -156,7 +148,7 @@
               
               <tr height="70">
                 <td align="right">
-                	<b style="font-size:14px;">应付款金额：<span style="font-size:22px; color:#ff4e00;" class="sumM">￥2899</span></b>
+                	<b style="font-size:14px;">应付款金额：￥<span style="font-size:22px; color:#ff4e00;" class="sumM">{{$sumprice}}</span></b>
                 </td>
               </tr>
               <tr height="70">
@@ -174,13 +166,14 @@
  
   </script>
    <script>
-       $(function(){
-          var sumM=0.0;
-         sum =  $('.sum').attr('value');
+       // $(function(){
+       //    var sumM=0.0;
+       //    num=$(".num").attr("data-num");
+       //   sum =  $('.sum').attr('value');
            
-          sumM+=parseInt(sum);
-         $('.sumM').html(sumM);
-       })
+       //    sumM+=parseInt(sum*num);
+       //   $('.sumM').html(sumM);
+       // })
  </script>
 	<!--End 第二步：确认订单信息 End-->
     
