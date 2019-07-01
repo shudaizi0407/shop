@@ -7,7 +7,7 @@
 	</head>
 	<body>
 	<!-- start header -->
-@include('index.goods.header');
+@include('index.common.header');
 	<!--end header -->
 
 <!-- start banner_x -->
@@ -69,7 +69,7 @@
 			<div class="main center">
 				@foreach ($data as $data)
 				<div class="mingxing fl">
-					<div class="sub_mingxing"><a href="details?id={{$data->id}}"><img src="{{$data->img}}" alt=""></a></div>
+					<div class="sub_mingxing"><a href="../details?id={{$data->id}}"><img src="../{{$data->img}}" alt=""></a></div>
 					<div class="pinpai"><a href="">{{$data->goodsname}}</a></div>
 					<div class="youhui">{{$data->goods_desc}}</div>
 					<div class="jiage">{{$data->price}}</div>

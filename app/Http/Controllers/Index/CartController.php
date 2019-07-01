@@ -12,10 +12,10 @@ class CartController extends Controller
     public function index(Request $request)
     {    
          
-        $request->session()->put('uid',12);    
+       // $request->session()->put('uid',12);    
  
         $id = $request->session()->get('uid');
-       
+       var_dump($id);die;
         if (empty($id)) {
 
           echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
