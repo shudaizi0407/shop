@@ -12,7 +12,7 @@ class CartController extends Controller
     public function index(Request $request)
     {    
          
-        if (!$request->session()->has('id')) {
+        if (!$request->session()->has('uid')) {
     		echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
     	}
 
@@ -21,7 +21,6 @@ class CartController extends Controller
    
         $data=Db::table('shopcar')->where('user_id',$id)
                                   ->join('goods','shopcar.goods_id','=','goods.id')
-                                  
                                   ->paginate(2);
         // var_dump($data);die;
         return view('index.cart.cart',["data"=>$data]);

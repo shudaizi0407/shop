@@ -16,7 +16,6 @@ class LoginController extends Controller
     	$data=$request->post();
         // var_dump($data);die;
     	$user=DB::table('user')->where($data)->get();
-
     	if (empty($user[0]->id)) {
     		return code('1000');
     	}
@@ -28,7 +27,7 @@ class LoginController extends Controller
     	DB::table('user')
           ->where('id', $user[0]->id)
           ->update(['as_token' => $token, 'create_time'=>time()]);
-
+        $request->session()->put('uid',$user[0]->id);
         return code(200, ['token'=>$token]);
     }
 }
