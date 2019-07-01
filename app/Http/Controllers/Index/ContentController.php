@@ -13,11 +13,11 @@ class ContentController extends Controller
     public function index(Request $request)
     {
   
-        if (!$request->session()->has('id')) {
+        if (!$request->session()->has('uid')) {
             echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
           }
 
-        $id =  $request->session()->get('id');
+        $id =  $request->session()->get('uid');
         
         $data = Db::table('orders')->join('orders_status', 'orders.order_status', '=', 'orders_status.id')
                                    ->join('orders_info', 'orders.order_number', '=', 'orders_info.order_number')
@@ -33,7 +33,7 @@ class ContentController extends Controller
     public function order(Request $request)
     {
 
-        $id =  $request->session()->get('id');
+        $id =  $request->session()->get('uid');
         
         $data = Db::table('orders')->join('orders_status', 'orders.order_status', '=', 'orders_status.id')
                                    ->join('orders_info', 'orders.order_number', '=', 'orders_info.order_number')
@@ -48,7 +48,7 @@ class ContentController extends Controller
       //待收货
       public function wait(Request $request)
       {
-          $id =  $request->session()->get('id');
+          $id =  $request->session()->get('uid');
           $data = Db::table('orders')->where('orders.user_id', $id)
                                      ->join('orders_status', 'orders.order_status', '=', 'orders_status.id')
                                      ->join('orders_info', 'orders.order_number', '=', 'orders_info.order_number')
@@ -66,7 +66,7 @@ class ContentController extends Controller
       // 待评论
       public function comment(Request $request)
       {
-          $id =  $request->session()->get('id');
+          $id =  $request->session()->get('uid');
           $data = Db::table('orders')->where('orders.user_id', $id)
                                       ->join('orders_status', 'orders.order_status', '=', 'orders_status.id')->join('orders_info', 'orders.order_number', '=', 'orders_info.order_number')
                                       ->join('goods', 'goods.id', '=', 'orders_info.goods_id')
@@ -83,7 +83,7 @@ class ContentController extends Controller
       //未付款
       public function unpaid(Request $request)
       {
-          $id =  $request->session()->get('id');
+          $id =  $request->session()->get('uid');
           $data = Db::table('orders')->where('orders.user_id', $id)
                                       ->join('orders_status', 'orders.order_status', '=', 'orders_status.id')->join('orders_info', 'orders.order_number', '=', 'orders_info.order_number')
                                       ->join('goods', 'goods.id', '=', 'orders_info.goods_id')

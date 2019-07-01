@@ -12,9 +12,9 @@ class CartController extends Controller
     public function index(Request $request)
     {    
          
-        $request->session()->put('id',12);    
+        $request->session()->put('uid',12);    
  
-        $id = $request->session()->get('id');
+        $id = $request->session()->get('uid');
        
         if (empty($id)) {
 
@@ -33,7 +33,7 @@ class CartController extends Controller
     //修改商品数量
     public function update(Request $request)
     {
-        $user_id = $request->session()->get('id');
+        $user_id = $request->session()->get('uid');
         $goods_id = $request->input('goods_id');
         $num = $request->input('num');
        
@@ -49,7 +49,7 @@ class CartController extends Controller
        //删除
    public function del(Request $request)
    {
-       $user_id =  $request->session()->get('id');
+       $user_id =  $request->session()->get('uid');
     
        $goods_id = $request->input('goods_id');
        $data = Db::table('shopcar')->where("user_id", $user_id)->where("goods_id", $goods_id)->delete();
@@ -69,7 +69,7 @@ class CartController extends Controller
     {
              $data = $request->input();
           
-             $user_id = $request->session()->get('id');
+             $user_id = $request->session()->get('uid');
 
               if (empty($user_id)) {
 
@@ -106,7 +106,7 @@ class CartController extends Controller
 
          $data = $request->input();
 
-         $user_id =  $request->session()->get('id');
+         $user_id =  $request->session()->get('uid');
       
          $order_number = rand(111111, 999999);
          $order = [
