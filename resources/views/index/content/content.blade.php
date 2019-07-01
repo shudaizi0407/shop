@@ -9,7 +9,7 @@
 	</head>
 	<body>
 	<!-- start header -->
-    @include('index.common.header')
+     @include('index.goods.header')
 	<!--end header -->
 	<!-- start banner_x -->
 	
