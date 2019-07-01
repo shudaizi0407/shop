@@ -9,7 +9,7 @@
 		<script type="text/javascript" src="layui/layui.js"></script>
 	</head>
 	<body>
-		<form method="post" action="register" enctype="multipart/form-data" onclick="return false;">
+		<form method="post" action="register" onclick="return false;">
 		<div class="regist">
 			<div class="regist_center">
 				<div class="regist_top">
@@ -25,7 +25,6 @@
 					<div class="username">确认密码:&nbsp;&nbsp;<input class="shurukuang" type="password" name="repwd" placeholder="请确认你的密码"/><span>两次密码要输入一致哦</span></div>
 					<div class="username">手&nbsp;&nbsp;机&nbsp;&nbsp;号:&nbsp;&nbsp;<input class="shurukuang" type="text" name="tel" placeholder="请填写正确的手机号"/><span>填写下手机号吧，方便我们联系您！</span></div>
 					<div class="username">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:&nbsp;&nbsp;<input class="shurukuang" type="text" name="email" placeholder="请填写正确的邮箱"/><span>请输入正确的邮箱格式</span></div>
-					<div class="username">头&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;像:&nbsp;&nbsp;<input class="shurukuang" type="file" name="head_img" placeholder="请输入你的头像"/><span>请选择你的专属头像</span></div>
 				</div>
 				<div class="regist_submit">
 					<input class="submit" type="submit" name="submit" value="立即注册" onclick="register()">

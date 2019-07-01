@@ -11,7 +11,6 @@ class GoodsController extends Controller
 	//查询
     public function index(Request $request)
     {
-        
     	$size=$request->input('size');
     	$page=$request->input('page');
 

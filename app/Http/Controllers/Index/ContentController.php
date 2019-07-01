@@ -7,15 +7,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 class ContentController extends Controller
 {
-    
-
 
     public function index(Request $request)
     {
-  
-        if (!$request->session()->has('uid')) {
-            echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
-          }
+    if (!$request->session()->has('uid')) {
+        echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
+    }
 
         $id =  $request->session()->get('uid');
         

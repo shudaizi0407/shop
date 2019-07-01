@@ -32,6 +32,8 @@
 							<li>|</li>
 							<li><a href="index-register" target="_blank" >注册</a></li>
 							<li>|</li>
+							<li><a href="/content" target="_blank">个人中心</a></li>
+							<li>|</li>
 							<li><a href="">消息通知</a></li>
 						</ul>
 					</div>
