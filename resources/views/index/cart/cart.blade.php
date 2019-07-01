@@ -26,11 +26,7 @@
 			<div class="wdgwc fl ml40">我的购物车</div>
 			<div class="wxts fl ml20">温馨提示：产品是否购买成功，以最终下单为准哦，请尽快结算</div>
 			<div class="dlzc fr">
-				<ul>
-					<li><a href="./login.html" target="_blank">登录</a></li>
-					<li>|</li>
-					<li><a href="./register.html" target="_blank">注册</a></li>	
-				</ul>
+			
 				
 			</div>
 			<div class="clear"></div>
