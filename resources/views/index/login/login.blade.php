@@ -71,7 +71,7 @@
                 $.post('login',{'uname':uname,'pwd':pwd},function(result){
                 if(result.code == 200)
                 {
-                    setTimeout(function(){window.location.href = "home-list";},1000);
+                    setTimeout(function(){window.location.href = "/index1";},1000);
                 }else{
                 	layer.alert(result.msg,{icon:2});
                 }

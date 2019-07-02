@@ -18,4 +18,9 @@ class LoginController extends Controller
 	{
 		return view('index.login.register');
 	}
+	public function cleans()
+	{
+		Session::forget('uid');
+	
+	}
 }
