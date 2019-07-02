@@ -169,22 +169,9 @@ Route::group(['namespace'=>'Api' ],function(){
 	Route::put('addr/update',"AddrController@update");
 
 	Route::get('message',"MessageController@message");
-	
-	
-
-
-
-
-	
-
 });
 Route::group(['namespace'=>'Api'], function(){
-
-
 	Route::post('login','LoginController@index');
-
-	
-
 });
 
 Route::group(['namespace'=>'Api', 'middleware'=>'token'], function(){
@@ -197,8 +184,6 @@ Route::group(['namespace'=>'Api', 'middleware'=>'token'], function(){
 	Route::get('recommend','GoodsController@recommend');
 	Route::get('activity','GoodsController@activity');
 	Route::get('discount','GoodsController@discount');
-
-
 });
 
 
