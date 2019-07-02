@@ -64,17 +64,16 @@
 					 	<li><?php echo (date("y/m/d h:i",$vo->create_time))?>
                                 						 
 						 </li>
-<<<<<<< HEAD
 						 <li>
 							<span style="font-size:12px;">查看详情>
 						  
 						  </span>
 							</li>
 						<div class="clear" ></div>
-=======
+
 					
 						<div class="clear"></div>
->>>>>>> f91cd5b73e4448d79e0e86711ffe80be1f25d421
+
 					</ul>
 				</div>
 				
@@ -288,10 +287,10 @@ function del(id)
             },    
             success:function(res){   
                 if(res.code == 200){   
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},100);
                 }else{    
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},100);
                 }    
     
@@ -334,10 +333,10 @@ $(document).on('click','.uname',function(){
             },    
             success:function(res){   
                 if(res.code == 200){   
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }else{    
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }    
     
@@ -362,10 +361,10 @@ $(document).on('click','.email',function(){
             },    
             success:function(res){   
                 if(res.code == 200){   
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }else{    
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }    
     
@@ -390,10 +389,10 @@ $(document).on('click','.tel',function(){
             },    
             success:function(res){   
                 if(res.code == 200){   
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }else{    
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }    
     
@@ -417,9 +416,11 @@ $(document).on('click','.pwd',function(){
                 pwd:val
             },    
             success:function(res){   
-                if(res.code == 200){   
+                if(res.code == 200){ 
+                	alert(res.message);  
                 	setTimeout(function(){window.location.reload();},1000); 
-                }else{    
+                }else{   
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }    
     
@@ -430,6 +431,20 @@ $(document).on('click','.pwd',function(){
 
 function money()
 {
-	alert('没有开通此功能');return;
+	$.ajax({
+        
+		 url:"/showDiscount",
+		 dataType:"json",
+		 success:function(res){
+			var str='';
+			  $.each(res.data,function(i,v){
+
+				// console.log(v)
+                  str +='<div class="rtcont fr"><div class="grzlbt ml40">优惠券</div><div class="subgrzl ml40"><span>'+v.instructions+'</span><span>'+v.start_time+'—'+v.end_time+'</span></div></div>';
+			  })
+			  $(".rtcont").html(str);
+		}
+
+	})
 }
 </script>

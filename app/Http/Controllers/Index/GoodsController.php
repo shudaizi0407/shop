@@ -20,11 +20,12 @@ class GoodsController extends Controller
     	$offset=($page-1)*$size;
 
     	$where[]=['status', 1];
-    	
+    	$id = session('uid');
+        $uname = DB::table('user')->where('id',$id)->first();
     	$data=DB::table('goods')->where($where)->skip($offset)->take($size)->get();
     	// var_dump($data);die;
     	$brand=DB::table('goods_brand')->get();
-    	return view('index.goods.goods',['brand'=>$brand,'data'=>$data]);
+    	return view('index.goods.goods',['brand'=>$brand,'data'=>$data,'uname'=>$uname]);
     }
     public function brand_list(Request $request){
     	$brand_id = $request->input('id');
@@ -36,7 +37,6 @@ class GoodsController extends Controller
     public function details(Request $request)
     {
     	$id=$request->input('id');
-    	
     	$brand=DB::table('goods_brand')->get();
     	$data=DB::table('goods')->where('id', $id)->get();
     	// var_dump($data);die;

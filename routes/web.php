@@ -171,6 +171,7 @@ Route::group(['namespace'=>'Api' ],function(){
 	Route::put('addr/update',"AddrController@update");
 
 	Route::get('message',"MessageController@message");
+	Route::get('showDiscount','GoodsController@showDiscount');
 	
 });
 Route::group(['namespace'=>'Api'], function(){

@@ -129,10 +129,21 @@ class GoodsController extends Controller
 		$data=DB::table('active')->where('status', 1)->get();
 		return code(200, $data);
 	}
+
+	public function showDiscount()
+	{
+		$user_id = session('uid');
+		$user_id=isset($user_id)?$user_id:0;
+		$data=DB::table('dis_user')
+			->leftJoin('discount', 'dis_user.discount_id', '=', 'discount.id')
+			->where('user_id',$user_id);
+			->get();
+		return code(200, $data);
+	}
 	//优惠卷
 	public function discount(Request $request)
 	{
-		$goods_id=$request->input('goods');
+		$goods_id=$request->input('goods_id');
 		$goods_id=isset($goods_id)?$goods_id:0;
 		$where=[];
 		if ($goods_id==0) {
