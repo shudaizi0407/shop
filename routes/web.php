@@ -138,7 +138,12 @@ Route::group(['namespace'=>'Index' ],function(){
     Route::get('ordercomment','ContentController@comment');
 	Route::get('orderall','ContentController@order');
 	Route::get('unpaid','ContentController@unpaid');
+<<<<<<< HEAD
 	Route::get('orderdetail','ContentController@orderDetail');
+=======
+
+	Route::get('info','InfoController@info');
+>>>>>>> e13df692e7ffbb265250a9e57234b7ecb4c3784e
 });
 
 Route::group(['namespace'=>'Api' ],function(){
@@ -171,20 +176,11 @@ Route::group(['namespace'=>'Api' ],function(){
 
 	Route::get('message',"MessageController@message");
 	
-	
-
-
-
-
-	
-
 });
 Route::group(['namespace'=>'Api'], function(){
 
 
 	Route::post('login','LoginController@index');
-
-	
 
 });
 

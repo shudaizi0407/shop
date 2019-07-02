@@ -12,7 +12,7 @@ class AddrController extends Controller
     public function addr(Request $request)
     {
 
-        $id=$request->input('id');
+        $id=$request->session()->get('uid');
         $data=Db::table('addr')->where('user_id',$id)->get();
         if ($data) {
             return code(200,$data);
@@ -24,7 +24,6 @@ class AddrController extends Controller
 
     public function add(Request $request)
     {
-
         $data=$request->input();
         $res=Db::table('addr')->insert($data);
         if ($res) {
@@ -36,7 +35,7 @@ class AddrController extends Controller
 
     public function del(Request $request)
     {
-        $id=$request->input('id');
+        $id = $request->input('id');
         $res=Db::table('addr')->where('id',$id)->delete();
         if ($res) {
             return code(200,$res);
@@ -47,8 +46,7 @@ class AddrController extends Controller
 
     public function update(Request $request)
     {
-
-        $id=$request->input('id');
+        $id = $request->input('id');
         $addr=$request->input('addr');
         $res=Db::table('addr')->where('id',$id)->update(['addr'=>$addr]);
         if ($res) {

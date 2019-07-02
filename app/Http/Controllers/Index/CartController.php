@@ -12,20 +12,16 @@ class CartController extends Controller
     public function index(Request $request)
     {    
          
-        $request->session()->put('uid',12);    
- 
-        $id = $request->session()->get('uid');
-       
-        if (empty($id)) {
+        if (!$request->session()->has('uid')) {
+    		echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
+    	}
 
-          echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
-
-        }
-
-        $data = Db::table('shopcar')->where('user_id', $id)
-                                    ->join('goods', 'shopcar.goods_id', '=', 'goods.id')
-                                  
-                                    ->paginate(2);
+        $id=$request->input('id',1);
+         
+   
+        $data=Db::table('shopcar')->where('user_id',$id)
+                                  ->join('goods','shopcar.goods_id','=','goods.id')
+                                  ->paginate(2);
         
         return view('index.cart.cart', ["data"=>$data]);
     }
