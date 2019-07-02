@@ -133,7 +133,7 @@ class CartController extends Controller
 
          Db::table('orders_info')->insert($order_info);
           //结算时同时删除购物车商品
-         Db::table("shopcar")->where(['user_id'=>$user_id, 'goods_id'=>$data['goods_id']])->delete();
+         // Db::table("shopcar")->where(['user_id'=>$user_id, 'goods_id'=>$data['goods_id']])->delete();
 
 
          return view('index.cart.endorder', ['order_number'=>$order_number]);

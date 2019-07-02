@@ -64,23 +64,15 @@
 					 	<li><?php echo (date("y/m/d h:i",$vo->create_time))?>
                                 						 
 						 </li>
-<<<<<<< HEAD
+
 					         <li>
 					         	<a href="/orderdetail?number={{$vo->order_number}}">详情 ></a>
 					         </li>
-=======
-<<<<<<< HEAD
-						 <li>
-							<span style="font-size:12px;">查看详情>
-						  
-						  </span>
-							</li>
+		
 						<div class="clear" ></div>
-=======
-					
->>>>>>> e13df692e7ffbb265250a9e57234b7ecb4c3784e
-						<div class="clear"></div>
->>>>>>> f91cd5b73e4448d79e0e86711ffe80be1f25d421
+
+
+
 					</ul>
 				</div>
 				
