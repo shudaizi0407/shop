@@ -138,6 +138,7 @@ Route::group(['namespace'=>'Index' ],function(){
     Route::get('ordercomment','ContentController@comment');
 	Route::get('orderall','ContentController@order');
 	Route::get('unpaid','ContentController@unpaid');
+	Route::get('orderdetail','ContentController@orderDetail');
 });
 
 Route::group(['namespace'=>'Api' ],function(){
