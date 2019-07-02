@@ -4,7 +4,7 @@
 	
 		<meta charset="UTF-8">
         <meta name="author" content="order by dede58.com"/>
-		<title>我的购物车-小米商城</title>
+		<title>我的购物车-商城</title>
 		<style type="text/css">
    .page li {display: inline-block;margin-right: -1px;padding: 5px;border: 1px solid #e2e2e2;min-width: 20px;text-align: center;}
 </style>
