@@ -110,11 +110,11 @@ class GoodsController extends Controller
         if(!isset($num)){
         	$num = '1';
         }
-        if(!$request->session()->has('id')){
+        if(!$request->session()->has('uid')){
         	echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
         }
         else
-        $user_id = $request->session()->get('id');
+        $user_id = $request->session()->get('uid');
     	$model = new goods();
     	$res = $model->addCart($id,$user_id,$num);
     	if($res){
@@ -127,14 +127,14 @@ class GoodsController extends Controller
     public function addOrder(Request $request)
     {
     	// $request->session()->put('id',2);
-    	if (!$request->session()->has('id')) {
+    	if (!$request->session()->has('uid')) {
     		echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
     	}
     	$num = $request->input('num');
         if(!isset($num)){
         	$num = '1';
         }
-    	$user_id = $request->session()->get('id');
+    	$user_id = $request->session()->get('uid');
 
     	$id = $request->input('id');
     	// var_dump($num);die;

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
         <meta name="author" content="order by dede58.com"/>
-		<title>小米商城</title>
+		<title>恭喜商城</title>
 		<base href="./index/">
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 	</head>
@@ -24,7 +24,7 @@
 			<div class="nav fl">
 				<ul>
 					@foreach ($brand as $brand)
-					<li><a href="brand-list?id={{$brand->brand_id}}" target="_blank">{{$brand->brand_name}}</a></li>
+					<li><a href="../brand-list?id={{$brand->brand_id}}" target="_blank">{{$brand->brand_name}}</a></li>
 					@endforeach
 				</ul>
 			</div>

@@ -82,7 +82,7 @@
 			<div class="jiesuandan mt20 center">
 				<div class="tishi fl ml20">
 					<ul>
-						<li><a href="./liebiao.html">继续购物</a></li>
+						<li><a href="../index1">继续购物</a></li>
 					<div class="clear"></div>
 					</ul>
 				</div>

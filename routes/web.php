@@ -131,7 +131,7 @@ Route::group(['namespace'=>'Index' ],function(){
     Route::post('orderadd','CartController@orderAdd');
 	Route::post('orderadddata','CartController@orderAddData');
 	Route::get('endorder','CartController@endorder');
-
+	Route::get('cleans','LoginController@cleans');
 	Route::get('content','ContentController@index');
 	Route::get('goodsnew','ContentController@goodsnew');
 	Route::get('wait','ContentController@wait');
