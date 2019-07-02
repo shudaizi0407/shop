@@ -104,7 +104,11 @@ class CartController extends Controller
 
              //默认的收获地址
              $info = Db::table('addr')->where('user_id', $user_id)->first();
-            // var_dump($info);die;
+               if (empty($info)) {
+
+                echo "<script>alert('请添加收货地址');window.location.href='index-login';</script>";
+
+              }
              return view('index.cart.order', ['data1'=>$data1, 'info'=>$info, 'sumprice'=>$sumprice]);
     }
       
