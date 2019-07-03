@@ -10,8 +10,7 @@
 	<body>
 	<!-- start header -->
 
-@include('index.common.header');
-
+@include('index.common.header')
 	<!--end header -->
 
 <!-- start banner_x -->
