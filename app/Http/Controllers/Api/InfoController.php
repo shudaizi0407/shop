@@ -10,8 +10,8 @@ class InfoController extends Controller
 {
     public function info(Request $request)
     {
-    	$id=$request->input('id');
-    	$data=Db::table('user')->where('id',$id)->select('uname','email','tel')->get();
+    	$id=$request->session()->get('uid');
+    	$data=Db::table('user')->where('id',$id)->get();
     	if ($data) {
     		return code('200',$data);
     	}else{
@@ -21,10 +21,8 @@ class InfoController extends Controller
 
     public function update(Request $request)
     {
-    	$data=$request->input();
-    	$id=$data['id'];
-    	unset($data['id']);
-    	$res=Db::table('user')->where('id',$id)->update($data);
+    	$data = $request->input();
+    	$res=Db::table('user')->where('id',$data['id'])->update($data);
     	if ($res) {
     		return code('200',$data);
     	}else{

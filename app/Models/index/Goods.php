@@ -17,11 +17,11 @@ class Goods extends Model
 		 $res = DB::table('shopcar')->insert($data);
 		 return $res;
 	}
-	public function addOrder($id,$user_id,$num)
+public function addOrder($id,$user_id,$num)
 	{
 		$user = DB::table('user')->where('id',$user_id)->first();
 		$address = DB::table('addr')->where('user_id',$user_id)->first('addr');//地址
-		//var_dump($id);die;
+
 		$data = [
 			'user_id'=>$user_id,
 			'name'=>$user->uname,
@@ -40,10 +40,18 @@ class Goods extends Model
 			'number'=>'1',
 			'goods_attribute'=>$goods->attribude,
 		];
-		 
-    	DB::table('orders')->insert($data);
+		$good_num = $goods->stock;
+		$goods_num = $good_num-1;
+		if($good_num==0){
+			echo "<script>alert('已售空');history.go(-1);</script>";
+		}else{
+		DB::table('orders')->insert($data);
     	DB::table('orders_info')->insert($data2);
+    	DB::table('goods')->where('id',$id)->update(['stock'=>$goods_num]);
+		}
+    	
     	
 		return 1;
 	}
+
 }

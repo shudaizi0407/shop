@@ -7,15 +7,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 class ContentController extends Controller
 {
-    
-
 
     public function index(Request $request)
     {
-  
-        if (!$request->session()->has('uid')) {
-            echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
-          }
+    if (!$request->session()->has('uid')) {
+        echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
+    }
 
         $id =  $request->session()->get('uid');
         
@@ -102,6 +99,14 @@ class ContentController extends Controller
       {
           $data = Db::table('goods')->limit(5)->get();
         return view('index.content.goodsnew', ['data'=>$data]);
+      }
+
+      //订单详情
+      public function orderDetail(Request $request)
+      {
+              $number =  $request->input('number');
+              $data = Db::table("orders")->where(['order_number'=>$number])->first();
+              return view("index.content.orderdetail", ['data'=>$data]);
       }
 
 }

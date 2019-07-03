@@ -12,20 +12,28 @@ class CartController extends Controller
     public function index(Request $request)
     {    
          
-        $request->session()->put('uid',12);    
+
+       // $request->session()->put('uid',12);    
  
-        $id = $request->session()->get('uid');
-       
-        if (empty($id)) {
+       //  $id = $request->session()->get('uid');
+       // var_dump($id);die;
+       //  if (empty($id)) {
 
-          echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
+       //    echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
 
-        }
+       //  }
 
-        $data = Db::table('shopcar')->where('user_id', $id)
-                                    ->join('goods', 'shopcar.goods_id', '=', 'goods.id')
-                                  
-                                    ->paginate(2);
+        if (!$request->session()->has('uid')) {
+    		echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
+    	}
+
+
+        $id=$request->input('id',1);
+         
+   
+        $data=Db::table('shopcar')->where('user_id',$id)
+                                  ->join('goods','shopcar.goods_id','=','goods.id')
+                                  ->paginate(2);
         
         return view('index.cart.cart', ["data"=>$data]);
     }
@@ -96,7 +104,11 @@ class CartController extends Controller
 
              //默认的收获地址
              $info = Db::table('addr')->where('user_id', $user_id)->first();
-            // var_dump($info);die;
+               if (empty($info)) {
+
+                echo "<script>alert('请添加收货地址');window.location.href='index-login';</script>";
+
+              }
              return view('index.cart.order', ['data1'=>$data1, 'info'=>$info, 'sumprice'=>$sumprice]);
     }
       

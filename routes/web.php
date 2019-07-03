@@ -131,13 +131,19 @@ Route::group(['namespace'=>'Index' ],function(){
     Route::post('orderadd','CartController@orderAdd');
 	Route::post('orderadddata','CartController@orderAddData');
 	Route::get('endorder','CartController@endorder');
-
+	Route::get('cleans','LoginController@cleans');
 	Route::get('content','ContentController@index');
 	Route::get('goodsnew','ContentController@goodsnew');
 	Route::get('wait','ContentController@wait');
     Route::get('ordercomment','ContentController@comment');
 	Route::get('orderall','ContentController@order');
 	Route::get('unpaid','ContentController@unpaid');
+
+	Route::get('orderdetail','ContentController@orderDetail');
+
+
+	Route::get('info','InfoController@info');
+
 });
 
 Route::group(['namespace'=>'Api' ],function(){
@@ -169,9 +175,11 @@ Route::group(['namespace'=>'Api' ],function(){
 	Route::put('addr/update',"AddrController@update");
 
 	Route::get('message',"MessageController@message");
+
 });
 Route::group(['namespace'=>'Api'], function(){
 	Route::post('login','LoginController@index');
+
 });
 
 Route::group(['namespace'=>'Api', 'middleware'=>'token'], function(){

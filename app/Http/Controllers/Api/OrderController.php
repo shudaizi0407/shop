@@ -12,7 +12,6 @@ class OrderController extends Controller
     {
 
     	$id=$request->input('id');
-        
         $data=Db::table('orders')->join('orders_status','orders.order_status','=','orders_status.id')->where('user_id',$id)->get();
         
     	if ($data) {
