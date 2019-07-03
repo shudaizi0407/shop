@@ -54,55 +54,17 @@
 				<div class="ddbh fl">订单号:{{$vo->order_number}}</div>
 				<div class="ztxx fr">
 					<ul>
-					    <li>{{$vo->goodsname}}
-						 
-						    </li>
-							
+					    <li>{{$vo->goodsname}}</li>	
 						<li>{{$vo->price}}</li>
 						<li>{{$vo->state}}</li>
-					  
-					 	<li><?php echo (date("y/m/d h:i",$vo->create_time))?>
-                                						 
-						 </li>
-<<<<<<< HEAD
-						 <li>
-=======
-
-					         <li>
-					         	<a href="/orderdetail?number={{$vo->order_number}}">详情 ></a>
-					         </li>
-
-						<!--  <li>
->>>>>>> a2016863e347a1f9b6e672138e12f460a1e3ae44
-							<span style="font-size:12px;">查看详情>
-						  
-						  </span>
-							</li> -->
+					 	<li><?php echo (date("y/m/d h:i",$vo->create_time))?></li>
+						<li><a href="/orderdetail?number={{$vo->order_number}}">详情 >></a></li>
 						<div class="clear" ></div>
-
-<<<<<<< HEAD
-					
-						<div class="clear"></div>
-=======
-
-
-					
->>>>>>> a2016863e347a1f9b6e672138e12f460a1e3ae44
-
 					</ul>
 				</div>
-				
 				<div class="clear"></div>
-			</div>
-
-			
-          @endforeach
-
-			
-	
-		<div class="clear"></div>
-		</div>
-		
+		    </div>
+          @endforeach	
 	</div>
 <!-- self_info -->
 		
@@ -447,19 +409,15 @@ $(document).on('click','.pwd',function(){
 function money()
 {
 	$.ajax({
-        
 		 url:"/showDiscount",
 		 dataType:"json",
 		 success:function(res){
 			var str='';
 			  $.each(res.data,function(i,v){
-
-				// console.log(v)
                   str +='<div class="rtcont fr"><div class="grzlbt ml40">优惠券</div><div class="subgrzl ml40"><span>'+v.instructions+'</span><span>'+v.start_time+'—'+v.end_time+'</span></div></div>';
 			  })
 			  $(".rtcont").html(str);
 		}
-
 	})
 }
 </script>

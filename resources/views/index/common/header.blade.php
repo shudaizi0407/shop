@@ -25,11 +25,8 @@
 					</ul>
 				</div>
 				<div class="right fr">
-<<<<<<< HEAD
+
 					<div class="gouwuche fr"><a href="/cart">我的购物车</a></div>
-=======
-					<div class="gouwuche fr"><a href="/cart">购物车</a></div>
->>>>>>> a2016863e347a1f9b6e672138e12f460a1e3ae44
 					<div class="fr">
 						<ul>
 							<li>
@@ -57,9 +54,7 @@
 				<div class="clear"></div>
 			</div>
 		</header>
-<<<<<<< HEAD
-       
-=======
+
         
 			
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -78,4 +73,3 @@
 		})
 	})
 </script>
->>>>>>> a2016863e347a1f9b6e672138e12f460a1e3ae44

@@ -12,17 +12,6 @@ class CartController extends Controller
     public function index(Request $request)
     {    
          
-
-       // $request->session()->put('uid',12);    
- 
-       //  $id = $request->session()->get('uid');
-       // var_dump($id);die;
-       //  if (empty($id)) {
-
-       //    echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
-
-       //  }
-
         if (!$request->session()->has('uid')) {
     		echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
     	}
@@ -76,7 +65,6 @@ class CartController extends Controller
     public function orderAdd(Request $request)
     {
              $data = $request->input();
-          
              $user_id = $request->session()->get('uid');
 
               if (empty($user_id)) {
@@ -92,7 +80,6 @@ class CartController extends Controller
                                                   ->first();
 
              }
-               
               // var_dump($data1);die; 
               //计算总价格
               $sumprice = 0;
@@ -151,8 +138,4 @@ class CartController extends Controller
          return view('index.cart.endorder', ['order_number'=>$order_number]);
 
     }
-
-    
-   
-
 }

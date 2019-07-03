@@ -133,10 +133,9 @@ class GoodsController extends Controller
 	public function showDiscount()
 	{
 		$user_id = session('uid');
-		$user_id=isset($user_id)?$user_id:0;
 		$data=DB::table('dis_user')
 			->leftJoin('discount', 'dis_user.discount_id', '=', 'discount.id')
-			->where('user_id',$user_id);
+			->where('user_id',$user_id)
 			->get();
 		return code(200, $data);
 	}
