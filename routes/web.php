@@ -176,6 +176,8 @@ Route::group(['namespace'=>'Api' ],function(){
 
 	Route::get('message',"MessageController@message");
 
+	Route::get('showDiscount','GoodsController@showDiscount');
+
 });
 Route::group(['namespace'=>'Api'], function(){
 	Route::post('login','LoginController@index');

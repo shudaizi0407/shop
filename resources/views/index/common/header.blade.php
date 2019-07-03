@@ -25,6 +25,7 @@
 					</ul>
 				</div>
 				<div class="right fr">
+
 					<div class="gouwuche fr"><a href="/cart">购物车</a></div>
 					<div class="fr">
 						<ul>
@@ -43,8 +44,7 @@
 							
 									</li>
 							<li>|</li>
-							<li><a href="/index-register
-" target="_blank" >注册</a></li>
+							<li><a href="/index-register" target="_blank" >注册</a></li>
 							<li>|</li>
 							<li><a href="/content">个人中心</a></li>
 						</ul>
@@ -54,6 +54,7 @@
 				<div class="clear"></div>
 			</div>
 		</header>
+
         
 			
 <script src="http://code.jquery.com/jquery-latest.js"></script>
