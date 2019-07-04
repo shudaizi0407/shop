@@ -9,12 +9,10 @@
 	</head>
 	<body>
 	<!-- start header -->
-<<<<<<< HEAD
-@include('index.common.header');
-=======
+
 
 @include('index.common.header')
->>>>>>> 6e5db96cc9866472b129c12802ba3204fb94e615
+
 	<!--end header -->
 
 <!-- start banner_x -->

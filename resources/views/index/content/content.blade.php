@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
         <meta name="author" content="order by dede58.com"/>
-		<title>小米商城-个人中心</title>
+		<title>商城-个人中心</title>
         <base href="./index/">
 		<link rel="stylesheet" type="text/css" href="./css/style.css">
 	</head>
@@ -12,7 +12,7 @@
    
 	<!--end header -->
 	<!-- start banner_x -->
-	
+	@include('index.common.header')
 <!-- end banner_x -->
 <!-- self_info -->
 	<div class="grzxbj">
@@ -58,7 +58,6 @@
 					    <li>{{$vo->goodsname}}</li>	
 						<li>{{$vo->price}}</li>
 						<li>{{$vo->state}}</li>
-<<<<<<< HEAD
 					  
 					 	<li><?php echo (date("y/m/d h:i",$vo->create_time))?>
                                 						 
@@ -71,10 +70,7 @@
 						<div class="clear" ></div>
 
 
-=======
-					 	<li><?php echo (date("y/m/d h:i",$vo->create_time))?></li>
-						<li><a href="/orderdetail?number={{$vo->order_number}}">详情 >></a></li>
->>>>>>> 7cb8eef9195865a6fb81f7429b077d341e395f1e
+
 					</ul>
 				</div>
 				<div class="clear"></div>
