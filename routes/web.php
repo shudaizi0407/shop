@@ -131,14 +131,17 @@ Route::group(['namespace'=>'Index' ],function(){
     Route::post('orderadd','CartController@orderAdd');
 	Route::post('orderadddata','CartController@orderAddData');
 	Route::get('endorder','CartController@endorder');
-
+	Route::get('orderdel','CartController@orderdel');
+	
+	Route::get('cleans','LoginController@cleans');
 	Route::get('content','ContentController@index');
 	Route::get('goodsnew','ContentController@goodsnew');
 	Route::get('wait','ContentController@wait');
     Route::get('ordercomment','ContentController@comment');
 	Route::get('orderall','ContentController@order');
 	Route::get('unpaid','ContentController@unpaid');
-
+	Route::get('collectlist','ContentController@collect');
+    Route::get('collectdel','ContentController@collectdel');
 	Route::get('orderdetail','ContentController@orderDetail');
 
 

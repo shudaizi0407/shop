@@ -94,6 +94,8 @@ class ContentController extends Controller
           }
   
       }
+
+   
      //为您推荐
       public function goodsNew()
       {
@@ -108,5 +110,22 @@ class ContentController extends Controller
               $data = Db::table("orders")->where(['order_number'=>$number])->first();
               return view("index.content.orderdetail", ['data'=>$data]);
       }
+      // 我的收藏
+      public function collect(Request $request)
+      {    $request->session()->put('uid',1);
+           $id = $request->session()->get('uid');
+           $data = Db::table('collect')->where("user_id",$id)
+                                       ->join('goods', 'collect.goods_id', '=', 'goods.id')
+
+                                       ->get();
+            // var_dump($data);die;
+            return view("index.content.collect",['data'=>$data]);
+      }
+     public function collectdel(Request $request)
+     {
+           $id =  $request->input('id');
+            Db::table('collect')->where('goods_id', $id)->delete();
+            return redirect("/collectlist");
+     }
 
 }

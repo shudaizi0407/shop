@@ -12,9 +12,21 @@ class CartController extends Controller
     public function index(Request $request)
     {    
          
+
+       // $request->session()->put('uid',12);    
+ 
+       //  $id = $request->session()->get('uid');
+       // var_dump($id);die;
+       //  if (empty($id)) {
+
+       //    echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
+
+       //  }
+
         if (!$request->session()->has('uid')) {
     		echo "<script>alert('即将跳转到登录页面');window.location.href='index-login';</script>";
     	}
+
 
         $id=$request->input('id',1);
          
@@ -133,13 +145,25 @@ class CartController extends Controller
 
          Db::table('orders_info')->insert($order_info);
           //结算时同时删除购物车商品
-         // Db::table("shopcar")->where(['user_id'=>$user_id, 'goods_id'=>$data['goods_id']])->delete();
+         Db::table("shopcar")->where(['user_id'=>$user_id, 'goods_id'=>$data['goods_id']])->delete();
 
 
          return view('index.cart.endorder', ['order_number'=>$order_number]);
 
     }
+    //订单删除
+       public function orderdel(Request $request)
+      {
+          $order_number = $request->input('order_number');
+          // var_dump($order_number);die;
+           // $order_number1 =  $order_number;
+         Db::table("orders")->where('order_number',$order_number)->delete();
 
+         // $order_number1 =  $order_number;
+         Db::table("orders_info")->where('order_number',$order_number)->delete();
+         return redirect('/content');
+
+      }
     
    
 

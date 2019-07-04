@@ -29,12 +29,7 @@
 
 </head>
 <body>  
-<!--Begin Header Begin-->
-<!-- @include('index.common.header') -->
-<!--End Header End--> 
-<!--Begin Menu Begin-->
 
-<!--End Menu End--> 
 <div class="i_bg">  
     
     

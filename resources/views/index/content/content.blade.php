@@ -38,6 +38,7 @@
 					 <li><a href="javascript:;" onclick="comment()">待评论</a></li>
 					 <li><a href="javascript:;" onclick="order()">全部订单</a></li>
 					 <li><a href="/goodsnew" >为你推荐</a></li>
+					 <li><a href="/collectlist" >我的收藏</a></li>
 				</ul>
 			</div>
 			
@@ -67,10 +68,9 @@
 
 					         <li>
 					         	<a href="/orderdetail?number={{$vo->order_number}}">详情 ></a>
-					         </li>
-		
+					         	<a href="/orderdel?order_number={{$vo->order_number}}">移除</a>
+					         </li>			
 						<div class="clear" ></div>
-
 
 
 					</ul>
