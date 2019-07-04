@@ -9,7 +9,7 @@
 	</head>
 	<body>
 	<!-- start header -->
-     @include('index.common.header')
+   
 	<!--end header -->
 	<!-- start banner_x -->
 	
@@ -20,7 +20,7 @@
 		<div class="lfnav fl">
 		
 			
-			<div class="ddzx">个人中心</div>
+			<div class="ddzx" data-id="{{Session::get('uid')}}">个人中心</div>
 			<div class="subddzx">
 				<ul>
 					<li><a href="/cart">我的购物车</a></li>
@@ -55,12 +55,10 @@
 				<div class="ddbh fl">订单号:{{$vo->order_number}}</div>
 				<div class="ztxx fr">
 					<ul>
-					    <li>{{$vo->goodsname}}
-						 
-						    </li>
-							
+					    <li>{{$vo->goodsname}}</li>	
 						<li>{{$vo->price}}</li>
 						<li>{{$vo->state}}</li>
+<<<<<<< HEAD
 					  
 					 	<li><?php echo (date("y/m/d h:i",$vo->create_time))?>
                                 						 
@@ -73,24 +71,19 @@
 						<div class="clear" ></div>
 
 
+=======
+					 	<li><?php echo (date("y/m/d h:i",$vo->create_time))?></li>
+						<li><a href="/orderdetail?number={{$vo->order_number}}">详情 >></a></li>
+>>>>>>> 7cb8eef9195865a6fb81f7429b077d341e395f1e
 					</ul>
 				</div>
-				
 				<div class="clear"></div>
-			</div>
-
-			
-          @endforeach
-
-			
-	
-		<div class="clear"></div>
-		</div>
-		
+		    </div>
+          @endforeach	
 	</div>
 <!-- self_info -->
 		
-		
+		<!-- <input type="text" name="user_id" value="2"><span>收货人:</span><input type="text" name="names"><span>联系电话:</span><input type="number" name="tels"><span>收货地址:</span><input type="text" name="addr"><input type="button" class="addradd" value="添加"> -->
 	</body>
 </html>
 <script src="./js/jquery-1.8.3.js"> </script>
@@ -152,7 +145,33 @@ function order(){
 
 }
 
-
+$(document).on('click','.addradd',function(){      
+        var addr=$("input[name=addr]").val();
+        var names=$("input[name=names]").val();
+        var tels=$("input[name=tels]").val();
+        var id=$(".ddzx").attr('data-id');
+          $.ajax({    
+            type:'post',    
+            url:'/addr/add',    
+            data:{    
+                user_id:id,    
+                addr:addr,
+                names:names,
+                tels:tels  
+            },
+            dataType:'json',
+            success:function(res){  
+                if(res.code == 200){ 
+                	alert('添加成功');  
+                	setTimeout(function(){window.location.reload();},100);  
+                }else{    
+                	alert('超时');  
+                }    
+    
+            }    
+       })    
+    })    
+  
 
 
 
@@ -237,12 +256,13 @@ function addr()
 		 url:"/addr",
 		 dataType:"json",
 		 success:function(res){
-			var str='';
+			var str='<div class="rtcont fr"><div class="grzlbt ml40">我的地址 </div><div class="grzlbt ml40"><span>收货人:</span><input type="text" name="names"><span>&nbsp;&nbsp;联系电话:&nbsp;</span><input type="text" name="tels"><span>&nbsp;&nbsp;收货地址:&nbsp;</span><input type="text" name="addr"><span class="addradd"> &nbsp;添加</span></div>';
 			  $.each(res.data,function(i,v){
 
 				// console.log(v)
-                  str +='<div class="rtcont fr"><div class="grzlbt ml40">我的地址</div><div class="subgrzl ml40" data-id="'+v.id+'"><span>收货地址</span><span class="addr">'+v.addr+'</span><span onclick="del('+v.id+')" style="cursor:pointer;">×</span></div></div>';
+                  str +='<div class="subgrzl ml40" data-id="'+v.id+'"><span>收货地址'+(i+1)+'</span><span class="addr">'+v.addr+'</span><span onclick="del('+v.id+')" style="cursor:pointer;">×</span></div>';
 			  })
+			  str+='</div>';
 			  $(".rtcont").html(str);
 		}
 	})
@@ -286,10 +306,10 @@ function del(id)
             },    
             success:function(res){   
                 if(res.code == 200){   
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},100);
                 }else{    
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},100);
                 }    
     
@@ -332,10 +352,10 @@ $(document).on('click','.uname',function(){
             },    
             success:function(res){   
                 if(res.code == 200){   
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }else{    
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }    
     
@@ -360,10 +380,10 @@ $(document).on('click','.email',function(){
             },    
             success:function(res){   
                 if(res.code == 200){   
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }else{    
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }    
     
@@ -388,10 +408,10 @@ $(document).on('click','.tel',function(){
             },    
             success:function(res){   
                 if(res.code == 200){   
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }else{    
-                	alert(res.msg);
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }    
     
@@ -415,9 +435,11 @@ $(document).on('click','.pwd',function(){
                 pwd:val
             },    
             success:function(res){   
-                if(res.code == 200){   
+                if(res.code == 200){ 
+                	alert(res.message);  
                 	setTimeout(function(){window.location.reload();},1000); 
-                }else{    
+                }else{   
+                	alert(res.message);
                 	setTimeout(function(){window.location.reload();},1000); 
                 }    
     
@@ -428,6 +450,16 @@ $(document).on('click','.pwd',function(){
 
 function money()
 {
-	alert('没有开通此功能');return;
+	$.ajax({
+		 url:"/showDiscount",
+		 dataType:"json",
+		 success:function(res){
+			var str='';
+			  $.each(res.data,function(i,v){
+                  str +='<div class="rtcont fr"><div class="grzlbt ml40">优惠券</div><div class="subgrzl ml40"><span>'+v.instructions+'</span><span>'+v.start_time+'—'+v.end_time+'</span></div></div>';
+			  })
+			  $(".rtcont").html(str);
+		}
+	})
 }
 </script>

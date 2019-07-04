@@ -6,12 +6,7 @@
 <!-- <link rel="stylesheet" type="text/css" href="./index/css/style.css"> -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
-    <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
-        <script type="text/javascript">
-           EvPNG.fix('div, ul, img, li, input, a'); 
-        </script>
-    <![endif]-->
+  
     
     <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>    
