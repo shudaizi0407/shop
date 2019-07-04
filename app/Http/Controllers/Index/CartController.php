@@ -138,7 +138,7 @@ class CartController extends Controller
          return view('index.cart.endorder', ['order_number'=>$order_number]);
 
     }
-<<<<<<< HEAD
+
     //订单删除
        public function orderdel(Request $request)
       {
@@ -155,6 +155,5 @@ class CartController extends Controller
     
    
 
-=======
->>>>>>> 7cb8eef9195865a6fb81f7429b077d341e395f1e
+
 }
