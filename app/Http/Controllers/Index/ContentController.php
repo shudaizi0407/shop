@@ -112,9 +112,9 @@ class ContentController extends Controller
       }
       // 我的收藏
       public function collect(Request $request)
-      {    $request->session()->put('uid',1);
+      {  
            $id = $request->session()->get('uid');
-           $data = Db::table('collect')->where("user_id",$id)
+           $data = Db::table('collect')->where("user_id", $id)
                                        ->join('goods', 'collect.goods_id', '=', 'goods.id')
 
                                        ->get();
