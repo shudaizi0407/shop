@@ -58,7 +58,7 @@
 					    <li>{{$vo->goodsname}}</li>	
 						<li>{{$vo->price}}</li>
 						<li>{{$vo->state}}</li>
-<<<<<<< HEAD
+
 					  
 					 	<li><?php echo (date("y/m/d h:i",$vo->create_time))?>
                                 						 
@@ -71,10 +71,7 @@
 						<div class="clear" ></div>
 
 
-=======
-					 	<li><?php echo (date("y/m/d h:i",$vo->create_time))?></li>
-						<li><a href="/orderdetail?number={{$vo->order_number}}">详情 >></a></li>
->>>>>>> 7cb8eef9195865a6fb81f7429b077d341e395f1e
+		 
 					</ul>
 				</div>
 				<div class="clear"></div>
@@ -106,7 +103,7 @@ function wait(){
 
 
                   console.log(v)
-                  str+='<div class="ddxq"><div class="ddspt fl"><img src="'+v.img+'" width="80px;" alt=""></div><div class="ddbh fl">订单号:'+v.order_number+'</div><div class="ztxx fr"><ul><li>'+v.goodsname+'</li><li>'+v.price+'</li><li>'+v.state+'</li><li>19/6/24 12:03</li><li><a href="/orderdetail?number='+v.order_number+'">详情 ></a></li><div class="clear"></div></ul></div><div class="clear"></div></div>';
+                  str+='<div class="ddxq"><div class="ddspt fl"><img src="'+v.img+'" width="80px;" alt=""></div><div class="ddbh fl">订单号:'+v.order_number+'</div><div class="ztxx fr"><ul><li>'+v.goodsname+'</li><li>'+v.price+'</li><li>'+v.state+'</li><li>19/6/24 12:03</li><li><a href="/orderdetail?number='+v.order_number+'">详情 ></a><a href="/orderdel?number='+v.order_number+'">移除</a></li><div class="clear"></div></ul></div><div class="clear"></div></div>';
 
 			  })
 
@@ -130,7 +127,7 @@ function order(){
 			  $.each(res.data,function(i,v){
 
 				// console.log(v)
-                  str +='<div class="ddxq"><div class="ddspt fl"><img src="'+v.img+'" width="80px;" alt=""></div><div class="ddbh fl">订单号:'+v.order_number+'</div><div class="ztxx fr"><ul><li>'+v.goodsname+'</li><li>'+v.price+'</li><li>'+v.state+'</li><li>19/6/24 12:03</li><li><a href="/orderdetail?number='+v.order_number+'">详情 ></a></li><div class="clear"></div></ul></div><div class="clear"></div></div>';
+                  str +='<div class="ddxq"><div class="ddspt fl"><img src="'+v.img+'" width="80px;" alt=""></div><div class="ddbh fl">订单号:'+v.order_number+'</div><div class="ztxx fr"><ul><li>'+v.goodsname+'</li><li>'+v.price+'</li><li>'+v.state+'</li><li>19/6/24 12:03</li><li><a href="/orderdetail?number='+v.order_number+'">详情 ></a><a href="/orderdel?number='+v.order_number+'">移除</a></li><div class="clear"></div></ul></div><div class="clear"></div></div>';
                    
 				  
 			  })
@@ -187,7 +184,7 @@ function comment(){
 			  $.each(res.data,function(i,v){
 
 				// console.log(v)
-                  str +='<div class="ddxq"><div class="ddspt fl"><img src="'+v.img+'" width="80px;" alt=""></div><div class="ddbh fl">订单号:'+v.order_number+'</div><div class="ztxx fr"><ul><li>'+v.goodsname+'</li><li>'+v.price+'</li><li>'+v.state+'</li><li>19/6/24 12:03</li><li><a href="/orderdetail?number='+v.order_number+'">详情 ></a></li><div class="clear"></div></ul></div><div class="clear"></div></div>';
+                  str +='<div class="ddxq"><div class="ddspt fl"><img src="'+v.img+'" width="80px;" alt=""></div><div class="ddbh fl">订单号:'+v.order_number+'</div><div class="ztxx fr"><ul><li>'+v.goodsname+'</li><li>'+v.price+'</li><li>'+v.state+'</li><li>19/6/24 12:03</li><li><a href="/orderdetail?number='+v.order_number+'">详情 ></a><a href="/orderdel?number='+v.order_number+'">移除</a></li><div class="clear"></div></ul></div><div class="clear"></div></div>';
                    
 				  
 			  })
@@ -212,7 +209,7 @@ function unpaid(){
 			  $.each(res.data,function(i,v){
 
 				// console.log(v)
-                  str +='<div class="ddxq"><div class="ddspt fl"><img src="'+v.img+'" width="80px;" alt=""></div><div class="ddbh fl">订单号:'+v.order_number+'</div><div class="ztxx fr"><ul><li>'+v.goodsname+'</li><li>'+v.price+'</li><li>'+v.state+'</li><li>19/6/24 12:03</li><li><a href="/orderdetail?number='+v.order_number+'">详情 ></a></li><div class="clear"></div></ul></div><div class="clear"></div></div>';
+                  str +='<div class="ddxq"><div class="ddspt fl"><img src="'+v.img+'" width="80px;" alt=""></div><div class="ddbh fl">订单号:'+v.order_number+'</div><div class="ztxx fr"><ul><li>'+v.goodsname+'</li><li>'+v.price+'</li><li>'+v.state+'</li><li>19/6/24 12:03</li><li><a href="/orderdetail?number='+v.order_number+'">详情 ></a><a href="/orderdel?number='+v.order_number+'">移除</a></li><div class="clear"></div></ul></div><div class="clear"></div></div>';
                    
 				  
 			  })
